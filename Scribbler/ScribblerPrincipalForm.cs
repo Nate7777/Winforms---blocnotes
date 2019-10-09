@@ -1,4 +1,15 @@
-﻿using System;
+﻿/*
+        Programmeur: Nathan Comeau
+        Date: 10/09/2019
+        But:  Devoir 02 phase A 
+ 
+        Solution: Scribbler.sln
+        Projet:   Scribbler.csproj
+        Classe:   ScribblerPrincipalForm.cs
+ 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +25,23 @@ namespace Scribbler
         public ScribblerPrincipalForm()
         {
             InitializeComponent();
+        }
+
+        private void ScribblerPrincipalForm_Load(object sender, EventArgs e)
+        {
+            AssocierImages();
+        }
+
+        private void AssocierImages()
+        {
+            nouveauToolStripMenuItem.Image = nouveauToolStripButton.Image;
+            ouvrirToolStripMenuItem.Image = ouvrirToolStripButton.Image;
+            enregistrerToolStripMenuItem.Image = enregistrerToolStripButton.Image;
+            imprimerToolStripMenuItem.Image = imprimerToolStripButton.Image;
+            couperToolStripMenuItem.Image = couperToolStripButton.Image;
+            copierToolStripMenuItem.Image = copierToolStripButton.Image;
+            collerToolStripMenuItem.Image = collerToolStripButton.Image;
+            aiderSurScribblerToolStripMenuItem.Image = aideToolStripButton.Image;
         }
     }
 }
