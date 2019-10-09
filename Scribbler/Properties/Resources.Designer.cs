@@ -103,6 +103,16 @@ namespace Scribbler.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FindHS {
+            get {
+                object obj = ResourceManager.GetObject("FindHS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FontDialogHS {
             get {
                 object obj = ResourceManager.GetObject("FontDialogHS", resourceCulture);

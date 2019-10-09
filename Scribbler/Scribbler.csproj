@@ -96,5 +96,8 @@
   <ItemGroup>
     <None Include="Resources\FontDialogHS.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FindHS.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
