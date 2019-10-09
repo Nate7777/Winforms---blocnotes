@@ -22,6 +22,9 @@ namespace Scribbler
 {
     public partial class ScribblerPrincipalForm : Form
     {
+
+        #region Initialisation des composantes
+
         public ScribblerPrincipalForm()
         {
             InitializeComponent();
@@ -32,6 +35,11 @@ namespace Scribbler
             AssocierImages();
         }
 
+        #endregion
+
+        #region Méthodes privées
+
+        #region Association des images
         private void AssocierImages()
         {
             nouveauToolStripMenuItem.Image = nouveauToolStripButton.Image;
@@ -43,5 +51,9 @@ namespace Scribbler
             collerToolStripMenuItem.Image = collerToolStripButton.Image;
             aiderSurScribblerToolStripMenuItem.Image = aideToolStripButton.Image;
         }
+
+        #endregion
+
+        #endregion
     }
 }
