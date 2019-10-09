@@ -6,4 +6,3 @@ C:\Users\nacom\Documents\College\2e annee\PROG1236\Devoirs\Scribbler\obj\Debug\S
 C:\Users\nacom\Documents\College\2e annee\PROG1236\Devoirs\Scribbler\obj\Debug\Scribbler.csproj.GenerateResource.cache
 C:\Users\nacom\Documents\College\2e annee\PROG1236\Devoirs\Scribbler\obj\Debug\Scribbler.exe
 C:\Users\nacom\Documents\College\2e annee\PROG1236\Devoirs\Scribbler\obj\Debug\Scribbler.pdb
-C:\Users\nacom\Documents\College\2e annee\PROG1236\Devoirs\Scribbler\obj\Debug\Scribbler.ScribblerNoteForm.resources
