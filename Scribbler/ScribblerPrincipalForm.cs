@@ -32,6 +32,11 @@ namespace Scribbler
             InitializeComponent();
         }
 
+        #region Variables
+
+        private int countFen;
+
+        #endregion
         private void ScribblerPrincipalForm_Load(object sender, EventArgs e)
         {
             AssocierImages();
@@ -59,22 +64,33 @@ namespace Scribbler
 
         #endregion
 
-        private void nouvelleNote_Click(object sender, EventArgs e)
+        private void NouvelleNote_Click(object sender, EventArgs e)
         {
             ScribblerNoteForm Note;
-            int countFen = 0;
+            countFen++;
             try
             {
                 Note = new ScribblerNoteForm();
                 Note.MdiParent = this;
                 Note.Show();
-                countFen++;
+                Note.Text = Note.Text + countFen;
                 
             }
             catch(Exception)
             {
                 MessageBox.Show(em.EmDocument.ToString());
             }
+        }
+
+        private void FenetreMDILayout_Click(object sender, EventArgs e)
+        {
+            gen.RemoveChecks(fenetreToolStripMenuItem);
+            ToolStripMenuItem oFormat;
+            oFormat = sender as ToolStripMenuItem;
+            oFormat.Checked = true;
+
+            int pos = fenetreToolStripMenuItem.DropDownItems.IndexOf((ToolStripMenuItem)sender);
+            this.LayoutMdi();
         }
     }
 }
