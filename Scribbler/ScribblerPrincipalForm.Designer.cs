@@ -79,9 +79,9 @@
             this.aideToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripComboBox3 = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.boldToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.italicToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.underlineToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.alignerGaucheToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.centrerToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.alignerDroiteToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -117,6 +117,7 @@
             this.toolStripMenuItem1,
             this.toolStripComboBox1});
             this.scribblerMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.scribblerMenuStrip.MdiWindowListItem = this.fenetreToolStripMenuItem;
             this.scribblerMenuStrip.Name = "scribblerMenuStrip";
             this.scribblerMenuStrip.Size = new System.Drawing.Size(800, 32);
             this.scribblerMenuStrip.TabIndex = 0;
@@ -405,15 +406,15 @@
             this.aideToolStripButton,
             this.toolStripComboBox2,
             this.toolStripComboBox3,
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3,
+            this.boldToolStripButton,
+            this.italicToolStripButton,
+            this.underlineToolStripButton,
             this.alignerGaucheToolStripButton,
             this.centrerToolStripButton,
             this.alignerDroiteToolStripButton});
             this.ToolStrip.Location = new System.Drawing.Point(5, 32);
             this.ToolStrip.Name = "ToolStrip";
-            this.ToolStrip.Size = new System.Drawing.Size(677, 28);
+            this.ToolStrip.Size = new System.Drawing.Size(716, 28);
             this.ToolStrip.TabIndex = 1;
             this.ToolStrip.Text = "toolStrip1";
             // 
@@ -510,32 +511,32 @@
             this.toolStripComboBox3.Name = "toolStripComboBox3";
             this.toolStripComboBox3.Size = new System.Drawing.Size(121, 28);
             // 
-            // toolStripButton1
+            // boldToolStripButton
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::Scribbler.Properties.Resources.boldhs;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.boldToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.boldToolStripButton.Image = global::Scribbler.Properties.Resources.boldhs;
+            this.boldToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.boldToolStripButton.Name = "boldToolStripButton";
+            this.boldToolStripButton.Size = new System.Drawing.Size(29, 25);
+            this.boldToolStripButton.Text = "toolStripButton1";
             // 
-            // toolStripButton2
+            // italicToolStripButton
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::Scribbler.Properties.Resources.ItalicHS;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButton2.Text = "toolStripButton2";
+            this.italicToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.italicToolStripButton.Image = global::Scribbler.Properties.Resources.ItalicHS;
+            this.italicToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.italicToolStripButton.Name = "italicToolStripButton";
+            this.italicToolStripButton.Size = new System.Drawing.Size(29, 25);
+            this.italicToolStripButton.Text = "toolStripButton2";
             // 
-            // toolStripButton3
+            // underlineToolStripButton
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::Scribbler.Properties.Resources.underline;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButton3.Text = "toolStripButton3";
+            this.underlineToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.underlineToolStripButton.Image = global::Scribbler.Properties.Resources.underline;
+            this.underlineToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.underlineToolStripButton.Name = "underlineToolStripButton";
+            this.underlineToolStripButton.Size = new System.Drawing.Size(29, 25);
+            this.underlineToolStripButton.Text = "toolStripButton3";
             // 
             // alignerGaucheToolStripButton
             // 
@@ -717,18 +718,6 @@
         private System.Windows.Forms.ToolStripMenuItem àProposDeScribblerToolStripMenuItem;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ToolStrip ToolStrip;
-        private System.Windows.Forms.ToolStripButton nouveauToolStripButton;
-        private System.Windows.Forms.ToolStripButton ouvrirToolStripButton;
-        private System.Windows.Forms.ToolStripButton enregistrerToolStripButton;
-        private System.Windows.Forms.ToolStripButton imprimerToolStripButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
-        private System.Windows.Forms.ToolStripButton couperToolStripButton;
-        private System.Windows.Forms.ToolStripButton copierToolStripButton;
-        private System.Windows.Forms.ToolStripButton collerToolStripButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton aideToolStripButton;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox2;
-        private System.Windows.Forms.ToolStripComboBox toolStripComboBox3;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
@@ -739,12 +728,24 @@
         private System.Windows.Forms.ToolStripPanel droiteToolStripPanel;
         private System.Windows.Forms.ToolStripPanel basToolStripPanel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripButton alignerGaucheToolStripButton;
-        private System.Windows.Forms.ToolStripButton centrerToolStripButton;
-        private System.Windows.Forms.ToolStripButton alignerDroiteToolStripButton;
+        internal System.Windows.Forms.ToolStripButton nouveauToolStripButton;
+        internal System.Windows.Forms.ToolStripButton ouvrirToolStripButton;
+        internal System.Windows.Forms.ToolStripButton enregistrerToolStripButton;
+        internal System.Windows.Forms.ToolStripButton imprimerToolStripButton;
+        internal System.Windows.Forms.ToolStripSeparator toolStripSeparator;
+        internal System.Windows.Forms.ToolStripButton couperToolStripButton;
+        internal System.Windows.Forms.ToolStripButton copierToolStripButton;
+        internal System.Windows.Forms.ToolStripButton collerToolStripButton;
+        internal System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        internal System.Windows.Forms.ToolStripButton aideToolStripButton;
+        internal System.Windows.Forms.ToolStripComboBox toolStripComboBox2;
+        internal System.Windows.Forms.ToolStripComboBox toolStripComboBox3;
+        internal System.Windows.Forms.ToolStripButton boldToolStripButton;
+        internal System.Windows.Forms.ToolStripButton italicToolStripButton;
+        internal System.Windows.Forms.ToolStripButton underlineToolStripButton;
+        internal System.Windows.Forms.ToolStripButton alignerGaucheToolStripButton;
+        internal System.Windows.Forms.ToolStripButton centrerToolStripButton;
+        internal System.Windows.Forms.ToolStripButton alignerDroiteToolStripButton;
     }
 }
 

@@ -63,7 +63,11 @@ namespace Scribbler
         #endregion
 
         #endregion
-
+        /// <summary>
+        /// Crée une nouvelle note
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NouvelleNote_Click(object sender, EventArgs e)
         {
             ScribblerNoteForm Note;
@@ -73,7 +77,7 @@ namespace Scribbler
                 Note = new ScribblerNoteForm();
                 Note.MdiParent = this;
                 Note.Show();
-                Note.Text = Note.Text + countFen;
+                Note.Text += countFen;
                 
             }
             catch(Exception)
@@ -82,15 +86,21 @@ namespace Scribbler
             }
         }
 
+        /// <summary>
+        /// Change la disposition des midchildren
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FenetreMDILayout_Click(object sender, EventArgs e)
         {
             gen.RemoveChecks(fenetreToolStripMenuItem);
             ToolStripMenuItem oFormat;
             oFormat = sender as ToolStripMenuItem;
-            oFormat.Checked = true;
 
             int pos = fenetreToolStripMenuItem.DropDownItems.IndexOf((ToolStripMenuItem)sender);
-            this.LayoutMdi();
+            this.LayoutMdi((MdiLayout)pos);
+
+            ((ToolStripMenuItem)sender).Checked = true;
         }
     }
 }

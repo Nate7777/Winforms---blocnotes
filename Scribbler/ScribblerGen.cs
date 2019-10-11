@@ -9,6 +9,11 @@ namespace Scribbler
 {
     class ScribblerGen
     {
+        #region Variables
+
+        public static int nbNotes;
+
+        #endregion
         public enum MessErreurs
         {
             EmDocument,
