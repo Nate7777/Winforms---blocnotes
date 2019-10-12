@@ -9,11 +9,8 @@ namespace Scribbler
 {
     class ScribblerGen
     {
-        #region Variables
+        #region Messages d'erreurs - Initialisation et enumeration
 
-        public static int nbNotes;
-
-        #endregion
         public enum MessErreurs
         {
             EmDocument,
@@ -28,6 +25,9 @@ namespace Scribbler
             MessagesErreurs[(int)em.EmInattendu] = "Erreur inattendue.";
         }
 
+        #endregion
+
+        #region methodes public static
         public static void RemoveChecks(ToolStripMenuItem menu)
         {
             if (menu != null)
@@ -39,5 +39,7 @@ namespace Scribbler
                 }
             }
         }
+
+        #endregion
     }
 }

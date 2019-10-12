@@ -1,7 +1,7 @@
 ﻿/*
         Programmeur: Nathan Comeau,Andy Fleur, Lala et Cabrel
         Date: 10/09/2019
-        But:  Devoir 02 phase B 
+        But:  Creer une application MDI - Devoir 02 phase B
  
         Solution: Scribbler.sln
         Projet:   Scribbler.csproj
@@ -101,6 +101,73 @@ namespace Scribbler
             this.LayoutMdi((MdiLayout)pos);
 
             ((ToolStripMenuItem)sender).Checked = true;
+        }
+
+        /// <summary>
+        /// Méthode partagée entre les 4 toolstrip panels
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Panneaux_ControlAdded(object sender, ControlEventArgs e)
+        {
+            ToolStripPanel oPanel;
+            oPanel = sender as ToolStripPanel;
+
+            if (e.Control == ScribblerToolStrip || e.Control == scribblerMenuStrip)
+            {
+                if(sender == hautToolStripPanel)
+                {
+                    //Pour menu strip
+
+                    scribblerMenuStrip.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
+                    scribblerMenuStrip.TextDirection = ToolStripTextDirection.Horizontal;
+                    menuToolStripComboBox.Visible = true;
+
+                    //Pour tool strip
+
+                    policeToolStripComboBox.Visible = true;
+                    tailleToolStripComboBox.Visible = true;
+                }
+                else if(sender == gaucheToolStripPanel)
+                {
+                    //Pour menu strip
+
+                    scribblerMenuStrip.LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow;
+                    scribblerMenuStrip.TextDirection = ToolStripTextDirection.Vertical270;
+                    menuToolStripComboBox.Visible = false;
+
+                    //Pour tool strip
+
+                    policeToolStripComboBox.Visible = false;
+                    tailleToolStripComboBox.Visible = false;
+                }
+                else if(sender == droiteToolStripPanel)
+                {
+                    //Pour menu strip
+
+                    scribblerMenuStrip.LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow;
+                    scribblerMenuStrip.TextDirection = ToolStripTextDirection.Vertical90;
+                    menuToolStripComboBox.Visible = false;
+
+                    //Pour tool strip
+
+                    policeToolStripComboBox.Visible = false;
+                    tailleToolStripComboBox.Visible = false;
+                }
+                else
+                {
+                    //Pour menu strip
+
+                    scribblerMenuStrip.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
+                    scribblerMenuStrip.TextDirection = ToolStripTextDirection.Horizontal;
+                    menuToolStripComboBox.Visible = true;
+
+                    //Pour tool strip
+
+                    policeToolStripComboBox.Visible = true;
+                    tailleToolStripComboBox.Visible = true;
+                }
+            }
         }
     }
 }
