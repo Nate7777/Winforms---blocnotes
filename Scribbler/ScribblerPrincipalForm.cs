@@ -62,7 +62,8 @@ namespace Scribbler
 
         #endregion
 
-        #endregion
+        #region Creation d'une nouvelle note
+
         /// <summary>
         /// Crée une nouvelle note
         /// </summary>
@@ -78,13 +79,17 @@ namespace Scribbler
                 Note.MdiParent = this;
                 Note.Show();
                 Note.Text += countFen;
-                
+
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show(em.EmDocument.ToString());
             }
         }
+
+        #endregion
+
+        #region Orientation des fenetres MDI
 
         /// <summary>
         /// Change la disposition des midchildren
@@ -103,6 +108,10 @@ namespace Scribbler
             ((ToolStripMenuItem)sender).Checked = true;
         }
 
+        #endregion
+
+        #region Orientation de la barre d'outil et de la barre de menu
+
         /// <summary>
         /// Méthode partagée entre les 4 toolstrip panels
         /// </summary>
@@ -113,61 +122,45 @@ namespace Scribbler
             ToolStripPanel oPanel;
             oPanel = sender as ToolStripPanel;
 
-            if (e.Control == ScribblerToolStrip || e.Control == scribblerMenuStrip)
-            {
-                if(sender == hautToolStripPanel)
-                {
-                    //Pour menu strip
 
+            if (sender == hautToolStripPanel || sender ==basToolStripPanel)
+            {
+                //Pour menu strip
+                if (e.Control == scribblerMenuStrip)
+                {
                     scribblerMenuStrip.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
                     scribblerMenuStrip.TextDirection = ToolStripTextDirection.Horizontal;
                     menuToolStripComboBox.Visible = true;
-
-                    //Pour tool strip
-
-                    policeToolStripComboBox.Visible = true;
-                    tailleToolStripComboBox.Visible = true;
                 }
-                else if(sender == gaucheToolStripPanel)
-                {
-                    //Pour menu strip
-
-                    scribblerMenuStrip.LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow;
-                    scribblerMenuStrip.TextDirection = ToolStripTextDirection.Vertical270;
-                    menuToolStripComboBox.Visible = false;
-
-                    //Pour tool strip
-
-                    policeToolStripComboBox.Visible = false;
-                    tailleToolStripComboBox.Visible = false;
-                }
-                else if(sender == droiteToolStripPanel)
-                {
-                    //Pour menu strip
-
-                    scribblerMenuStrip.LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow;
-                    scribblerMenuStrip.TextDirection = ToolStripTextDirection.Vertical90;
-                    menuToolStripComboBox.Visible = false;
-
-                    //Pour tool strip
-
-                    policeToolStripComboBox.Visible = false;
-                    tailleToolStripComboBox.Visible = false;
-                }
+                //Pour tool strip
                 else
                 {
-                    //Pour menu strip
-
-                    scribblerMenuStrip.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
-                    scribblerMenuStrip.TextDirection = ToolStripTextDirection.Horizontal;
-                    menuToolStripComboBox.Visible = true;
-
-                    //Pour tool strip
-
                     policeToolStripComboBox.Visible = true;
                     tailleToolStripComboBox.Visible = true;
                 }
             }
+            else 
+            {
+                //Pour menu strip
+                if (e.Control == scribblerMenuStrip)
+                {
+                    scribblerMenuStrip.LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow;
+                    scribblerMenuStrip.TextDirection = ToolStripTextDirection.Vertical90;
+                    menuToolStripComboBox.Visible = false;
+                }
+                //Pour tool strip
+                else
+                {
+                    policeToolStripComboBox.Visible = false;
+                    tailleToolStripComboBox.Visible = false;
+                }
+            }
         }
+
+        #endregion
+
+        #endregion
+
+
     }
 }
