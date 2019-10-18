@@ -6,14 +6,152 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using gen = Scribbler.ScribblerGen;
+using em = Scribbler.ScribblerGen.MessErreurs;
 
 namespace Scribbler
 {
     public partial class ScribblerNoteForm : Form
     {
+        #region Variables
+
+        public static int numInt;
+        private static string filtreString;
+        private static string initialDirectory;
+        public Boolean enregistrerBool;
+
+        #endregion
+
+        #region Initialisation
         public ScribblerNoteForm()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+                numInt++;
+                Save = false;
+                filtreString = "Fichiers rtf (*.rtf)|*.rtf|Tous les fichiers (*.*)|*.*";
+                initialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(gen.MessagesErreurs[(int)em.EmInattendu]);
+            }
         }
+
+        #endregion
+
+        #region Propriété Enregistrer
+        public Boolean Save
+        {
+            get
+            {
+                return enregistrerBool;
+            }
+            set
+            {
+                enregistrerBool = value;
+            }
+
+        }
+        #endregion
+
+        #region Fermeture de la page note
+        private void ScribblerNoteForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult enregistrer;
+
+            try
+            {
+                if (noteRichTextBox.Modified && noteRichTextBox.Text.Length >= 1)
+                {
+                    enregistrer = MessageBox.Show(gen.MessagesErreurs[(int)em.
+                        EmErreurEnregistrer], "Fermeture du document"
+                                  , MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation);
+                    switch (enregistrer)
+                    {
+                        case DialogResult.Yes:
+                            Enregistrer();
+                            this.Dispose();
+                            break;
+                        case DialogResult.No:
+                            this.Dispose();
+                            break;
+                        case DialogResult.Cancel:
+                            e.Cancel = true;
+                            break;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(gen.MessagesErreurs[(int)em.EmInattendu] +
+                    Environment.NewLine.ToString());
+            }
+        }
+
+        #endregion
+
+        #region Enregistrement
+        public void Enregistrer()
+        {
+            try
+            {
+                if (noteRichTextBox.Modified && noteRichTextBox.Text.Length >= 1)
+                {
+                    if (!Save)
+                        EnregistrerSous();
+                    else
+                    {
+                        noteRichTextBox.SaveFile(this.Text);
+                        noteRichTextBox.Modified = false;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(gen.MessagesErreurs[(int)em.EmEnregistrementErreur]);
+            }
+        }
+
+        #endregion
+
+        #region Enregistrement sous
+
+        public void EnregistrerSous()
+        {
+            try
+            {
+                SaveFileDialog scribblerSaveFileDialog = new SaveFileDialog();
+
+                scribblerSaveFileDialog.DefaultExt = "rtf";
+                scribblerSaveFileDialog.FilterIndex = 0;
+                scribblerSaveFileDialog.CheckPathExists = true;
+                scribblerSaveFileDialog.OverwritePrompt = true;
+                scribblerSaveFileDialog.AddExtension = true;
+                scribblerSaveFileDialog.Title = "Enregistrer le texte";
+                scribblerSaveFileDialog.InitialDirectory = initialDirectory;
+                scribblerSaveFileDialog.Filter = filtreString;
+                scribblerSaveFileDialog.FileName = this.Text;
+
+                if (scribblerSaveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    this.noteRichTextBox.SaveFile(scribblerSaveFileDialog.FileName);
+                    this.Text = scribblerSaveFileDialog.FileName;
+                    Save = true;
+                    noteRichTextBox.Modified = false;
+
+                }
+
+                scribblerSaveFileDialog.Dispose();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(gen.MessagesErreurs[(int)em.EmEnregistrementErreur]
+                    + Environment.NewLine.ToString());
+            }
+        }
+
+        #endregion
     }
 }

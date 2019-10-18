@@ -29,33 +29,34 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScribblerNoteForm));
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.noteRichTextBox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // noteRichTextBox
             // 
-            this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(280, 259);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.noteRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.noteRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.noteRichTextBox.Name = "noteRichTextBox";
+            this.noteRichTextBox.Size = new System.Drawing.Size(371, 279);
+            this.noteRichTextBox.TabIndex = 0;
+            this.noteRichTextBox.Text = "";
             // 
             // ScribblerNoteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(280, 259);
-            this.Controls.Add(this.richTextBox1);
+            this.ClientSize = new System.Drawing.Size(371, 279);
+            this.Controls.Add(this.noteRichTextBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ScribblerNoteForm";
             this.Text = "Note";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScribblerNoteForm_FormClosing);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        internal System.Windows.Forms.RichTextBox noteRichTextBox;
     }
 }

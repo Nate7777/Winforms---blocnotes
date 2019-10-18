@@ -65,8 +65,8 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aiderSurScribblerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.àProposDeScribblerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
-            this.ScribblerToolStrip = new System.Windows.Forms.ToolStrip();
+            this.questionToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
+            this.scribblerToolStrip = new System.Windows.Forms.ToolStrip();
             this.nouveauToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ouvrirToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.enregistrerToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -77,27 +77,28 @@
             this.collerToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.aideToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.policeToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
-            this.tailleToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
+            this.scribblerToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
+            this.scribToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.boldToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.italicToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.underlineToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.alignerGaucheToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.centrerToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.alignerDroiteToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.scribblerStatusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
-            this.hautToolStripPanel = new System.Windows.Forms.ToolStripPanel();
-            this.gaucheToolStripPanel = new System.Windows.Forms.ToolStripPanel();
-            this.droiteToolStripPanel = new System.Windows.Forms.ToolStripPanel();
+            this.scribblerTopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
+            this.scribblerLeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
+            this.scribblerRightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.basToolStripPanel = new System.Windows.Forms.ToolStripPanel();
+            this.scribblerOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.scribblerMenuStrip.SuspendLayout();
-            this.ScribblerToolStrip.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
-            this.hautToolStripPanel.SuspendLayout();
+            this.scribblerToolStrip.SuspendLayout();
+            this.scribblerStatusStrip.SuspendLayout();
+            this.scribblerTopToolStripPanel.SuspendLayout();
             this.basToolStripPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,7 +116,7 @@
             this.outilsToolStripMenuItem,
             this.fenetreToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.menuToolStripComboBox});
+            this.questionToolStripComboBox});
             this.scribblerMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.scribblerMenuStrip.MdiWindowListItem = this.fenetreToolStripMenuItem;
             this.scribblerMenuStrip.Name = "scribblerMenuStrip";
@@ -142,7 +143,7 @@
             // nouveauToolStripMenuItem
             // 
             this.nouveauToolStripMenuItem.Name = "nouveauToolStripMenuItem";
-            this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
+            this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.nouveauToolStripMenuItem.Text = "&Nouveau";
             this.nouveauToolStripMenuItem.Click += new System.EventHandler(this.NouvelleNote_Click);
             // 
@@ -150,50 +151,55 @@
             // 
             this.ouvrirToolStripMenuItem.Name = "ouvrirToolStripMenuItem";
             this.ouvrirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
+            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.ouvrirToolStripMenuItem.Text = "&Ouvrir";
+            this.ouvrirToolStripMenuItem.Click += new System.EventHandler(this.Ouvrir_Click);
             // 
             // fermerToolStripMenuItem
             // 
             this.fermerToolStripMenuItem.Name = "fermerToolStripMenuItem";
-            this.fermerToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
+            this.fermerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.fermerToolStripMenuItem.Text = "&Fermer";
+            this.fermerToolStripMenuItem.Click += new System.EventHandler(this.Fermer_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(210, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(221, 6);
             // 
             // enregistrerToolStripMenuItem
             // 
             this.enregistrerToolStripMenuItem.Name = "enregistrerToolStripMenuItem";
             this.enregistrerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
+            this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.enregistrerToolStripMenuItem.Text = "&Enregistrer";
+            this.enregistrerToolStripMenuItem.Click += new System.EventHandler(this.Enregistrement_Click);
             // 
             // enregistrerSousToolStripMenuItem
             // 
             this.enregistrerSousToolStripMenuItem.Name = "enregistrerSousToolStripMenuItem";
-            this.enregistrerSousToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
+            this.enregistrerSousToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.enregistrerSousToolStripMenuItem.Text = "&Enregistrer sous...";
+            this.enregistrerSousToolStripMenuItem.Click += new System.EventHandler(this.Enregistrement_Click);
             // 
             // imprimerToolStripMenuItem
             // 
             this.imprimerToolStripMenuItem.Name = "imprimerToolStripMenuItem";
             this.imprimerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.imprimerToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
+            this.imprimerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.imprimerToolStripMenuItem.Text = "&Imprimer...";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(210, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(221, 6);
             // 
             // quitterToolStripMenuItem
             // 
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
-            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(213, 26);
+            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.quitterToolStripMenuItem.Text = "&Quitter";
+            this.quitterToolStripMenuItem.Click += new System.EventHandler(this.Quitter_Click);
             // 
             // editionToolStripMenuItem
             // 
@@ -382,18 +388,18 @@
             this.àProposDeScribblerToolStripMenuItem.Size = new System.Drawing.Size(237, 26);
             this.àProposDeScribblerToolStripMenuItem.Text = "À propo&s de Scribbler";
             // 
-            // menuToolStripComboBox
+            // questionToolStripComboBox
             // 
-            this.menuToolStripComboBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.menuToolStripComboBox.Name = "menuToolStripComboBox";
-            this.menuToolStripComboBox.Size = new System.Drawing.Size(121, 28);
-            this.menuToolStripComboBox.Text = "Tapez une question";
+            this.questionToolStripComboBox.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.questionToolStripComboBox.Name = "questionToolStripComboBox";
+            this.questionToolStripComboBox.Size = new System.Drawing.Size(121, 28);
+            this.questionToolStripComboBox.Text = "Tapez une question";
             // 
-            // ScribblerToolStrip
+            // scribblerToolStrip
             // 
-            this.ScribblerToolStrip.Dock = System.Windows.Forms.DockStyle.None;
-            this.ScribblerToolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.ScribblerToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.scribblerToolStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.scribblerToolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.scribblerToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nouveauToolStripButton,
             this.ouvrirToolStripButton,
             this.enregistrerToolStripButton,
@@ -404,19 +410,19 @@
             this.collerToolStripButton,
             this.toolStripSeparator1,
             this.aideToolStripButton,
-            this.policeToolStripComboBox,
-            this.tailleToolStripComboBox,
+            this.scribblerToolStripComboBox,
+            this.scribToolStripComboBox,
             this.boldToolStripButton,
             this.italicToolStripButton,
             this.underlineToolStripButton,
             this.alignerGaucheToolStripButton,
             this.centrerToolStripButton,
             this.alignerDroiteToolStripButton});
-            this.ScribblerToolStrip.Location = new System.Drawing.Point(5, 32);
-            this.ScribblerToolStrip.Name = "ScribblerToolStrip";
-            this.ScribblerToolStrip.Size = new System.Drawing.Size(716, 28);
-            this.ScribblerToolStrip.TabIndex = 1;
-            this.ScribblerToolStrip.Text = "toolStrip1";
+            this.scribblerToolStrip.Location = new System.Drawing.Point(5, 32);
+            this.scribblerToolStrip.Name = "scribblerToolStrip";
+            this.scribblerToolStrip.Size = new System.Drawing.Size(677, 28);
+            this.scribblerToolStrip.TabIndex = 1;
+            this.scribblerToolStrip.Text = "toolStrip1";
             // 
             // nouveauToolStripButton
             // 
@@ -436,6 +442,7 @@
             this.ouvrirToolStripButton.Name = "ouvrirToolStripButton";
             this.ouvrirToolStripButton.Size = new System.Drawing.Size(29, 25);
             this.ouvrirToolStripButton.Text = "&Open";
+            this.ouvrirToolStripButton.Click += new System.EventHandler(this.Ouvrir_Click);
             // 
             // enregistrerToolStripButton
             // 
@@ -445,6 +452,7 @@
             this.enregistrerToolStripButton.Name = "enregistrerToolStripButton";
             this.enregistrerToolStripButton.Size = new System.Drawing.Size(29, 25);
             this.enregistrerToolStripButton.Text = "&Save";
+            this.enregistrerToolStripButton.Click += new System.EventHandler(this.Enregistrement_Click);
             // 
             // imprimerToolStripButton
             // 
@@ -501,15 +509,15 @@
             this.aideToolStripButton.Size = new System.Drawing.Size(29, 25);
             this.aideToolStripButton.Text = "He&lp";
             // 
-            // policeToolStripComboBox
+            // scribblerToolStripComboBox
             // 
-            this.policeToolStripComboBox.Name = "policeToolStripComboBox";
-            this.policeToolStripComboBox.Size = new System.Drawing.Size(121, 28);
+            this.scribblerToolStripComboBox.Name = "scribblerToolStripComboBox";
+            this.scribblerToolStripComboBox.Size = new System.Drawing.Size(121, 28);
             // 
-            // tailleToolStripComboBox
+            // scribToolStripComboBox
             // 
-            this.tailleToolStripComboBox.Name = "tailleToolStripComboBox";
-            this.tailleToolStripComboBox.Size = new System.Drawing.Size(121, 28);
+            this.scribToolStripComboBox.Name = "scribToolStripComboBox";
+            this.scribToolStripComboBox.Size = new System.Drawing.Size(121, 28);
             // 
             // boldToolStripButton
             // 
@@ -565,20 +573,20 @@
             this.alignerDroiteToolStripButton.Size = new System.Drawing.Size(29, 25);
             this.alignerDroiteToolStripButton.Text = "Aligner à droite";
             // 
-            // statusStrip1
+            // scribblerStatusStrip
             // 
-            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.scribblerStatusStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.scribblerStatusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.scribblerStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.toolStripProgressBar1,
             this.toolStripDropDownButton1,
             this.toolStripSplitButton1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 0);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 26);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
+            this.scribblerStatusStrip.Location = new System.Drawing.Point(0, 0);
+            this.scribblerStatusStrip.Name = "scribblerStatusStrip";
+            this.scribblerStatusStrip.Size = new System.Drawing.Size(800, 26);
+            this.scribblerStatusStrip.TabIndex = 2;
+            this.scribblerStatusStrip.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
@@ -609,41 +617,41 @@
             this.toolStripSplitButton1.Size = new System.Drawing.Size(39, 24);
             this.toolStripSplitButton1.Text = "toolStripSplitButton1";
             // 
-            // hautToolStripPanel
+            // scribblerTopToolStripPanel
             // 
-            this.hautToolStripPanel.Controls.Add(this.scribblerMenuStrip);
-            this.hautToolStripPanel.Controls.Add(this.ScribblerToolStrip);
-            this.hautToolStripPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.hautToolStripPanel.Location = new System.Drawing.Point(0, 0);
-            this.hautToolStripPanel.Name = "hautToolStripPanel";
-            this.hautToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.hautToolStripPanel.RowMargin = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.hautToolStripPanel.Size = new System.Drawing.Size(800, 60);
-            this.hautToolStripPanel.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.Panneaux_ControlAdded);
+            this.scribblerTopToolStripPanel.Controls.Add(this.scribblerMenuStrip);
+            this.scribblerTopToolStripPanel.Controls.Add(this.scribblerToolStrip);
+            this.scribblerTopToolStripPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.scribblerTopToolStripPanel.Location = new System.Drawing.Point(0, 0);
+            this.scribblerTopToolStripPanel.Name = "scribblerTopToolStripPanel";
+            this.scribblerTopToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.scribblerTopToolStripPanel.RowMargin = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.scribblerTopToolStripPanel.Size = new System.Drawing.Size(800, 60);
+            this.scribblerTopToolStripPanel.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.Panneaux_ControlAdded);
             // 
-            // gaucheToolStripPanel
+            // scribblerLeftToolStripPanel
             // 
-            this.gaucheToolStripPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.gaucheToolStripPanel.Location = new System.Drawing.Point(0, 0);
-            this.gaucheToolStripPanel.Name = "gaucheToolStripPanel";
-            this.gaucheToolStripPanel.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.gaucheToolStripPanel.RowMargin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.gaucheToolStripPanel.Size = new System.Drawing.Size(0, 424);
-            this.gaucheToolStripPanel.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.Panneaux_ControlAdded);
+            this.scribblerLeftToolStripPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.scribblerLeftToolStripPanel.Location = new System.Drawing.Point(0, 0);
+            this.scribblerLeftToolStripPanel.Name = "scribblerLeftToolStripPanel";
+            this.scribblerLeftToolStripPanel.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.scribblerLeftToolStripPanel.RowMargin = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.scribblerLeftToolStripPanel.Size = new System.Drawing.Size(0, 424);
+            this.scribblerLeftToolStripPanel.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.Panneaux_ControlAdded);
             // 
-            // droiteToolStripPanel
+            // scribblerRightToolStripPanel
             // 
-            this.droiteToolStripPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.droiteToolStripPanel.Location = new System.Drawing.Point(800, 0);
-            this.droiteToolStripPanel.Name = "droiteToolStripPanel";
-            this.droiteToolStripPanel.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.droiteToolStripPanel.RowMargin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.droiteToolStripPanel.Size = new System.Drawing.Size(0, 424);
-            this.droiteToolStripPanel.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.Panneaux_ControlAdded);
+            this.scribblerRightToolStripPanel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.scribblerRightToolStripPanel.Location = new System.Drawing.Point(800, 0);
+            this.scribblerRightToolStripPanel.Name = "scribblerRightToolStripPanel";
+            this.scribblerRightToolStripPanel.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.scribblerRightToolStripPanel.RowMargin = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.scribblerRightToolStripPanel.Size = new System.Drawing.Size(0, 424);
+            this.scribblerRightToolStripPanel.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.Panneaux_ControlAdded);
             // 
             // basToolStripPanel
             // 
-            this.basToolStripPanel.Controls.Add(this.statusStrip1);
+            this.basToolStripPanel.Controls.Add(this.scribblerStatusStrip);
             this.basToolStripPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.basToolStripPanel.Location = new System.Drawing.Point(0, 424);
             this.basToolStripPanel.Name = "basToolStripPanel";
@@ -652,14 +660,18 @@
             this.basToolStripPanel.Size = new System.Drawing.Size(800, 26);
             this.basToolStripPanel.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.Panneaux_ControlAdded);
             // 
+            // scribblerOpenFileDialog
+            // 
+            this.scribblerOpenFileDialog.FileName = "openFileDialog1";
+            // 
             // ScribblerPrincipalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.hautToolStripPanel);
-            this.Controls.Add(this.droiteToolStripPanel);
-            this.Controls.Add(this.gaucheToolStripPanel);
+            this.Controls.Add(this.scribblerTopToolStripPanel);
+            this.Controls.Add(this.scribblerRightToolStripPanel);
+            this.Controls.Add(this.scribblerLeftToolStripPanel);
             this.Controls.Add(this.basToolStripPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
@@ -667,15 +679,16 @@
             this.Name = "ScribblerPrincipalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Scribbler";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ScribblerPrincipalForm_Load);
             this.scribblerMenuStrip.ResumeLayout(false);
             this.scribblerMenuStrip.PerformLayout();
-            this.ScribblerToolStrip.ResumeLayout(false);
-            this.ScribblerToolStrip.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.hautToolStripPanel.ResumeLayout(false);
-            this.hautToolStripPanel.PerformLayout();
+            this.scribblerToolStrip.ResumeLayout(false);
+            this.scribblerToolStrip.PerformLayout();
+            this.scribblerStatusStrip.ResumeLayout(false);
+            this.scribblerStatusStrip.PerformLayout();
+            this.scribblerTopToolStripPanel.ResumeLayout(false);
+            this.scribblerTopToolStripPanel.PerformLayout();
             this.basToolStripPanel.ResumeLayout(false);
             this.basToolStripPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -720,16 +733,16 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem aiderSurScribblerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem àProposDeScribblerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripComboBox menuToolStripComboBox;
-        private System.Windows.Forms.ToolStrip ScribblerToolStrip;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripComboBox questionToolStripComboBox;
+        private System.Windows.Forms.ToolStrip scribblerToolStrip;
+        private System.Windows.Forms.StatusStrip scribblerStatusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
-        private System.Windows.Forms.ToolStripPanel hautToolStripPanel;
-        private System.Windows.Forms.ToolStripPanel gaucheToolStripPanel;
-        private System.Windows.Forms.ToolStripPanel droiteToolStripPanel;
+        private System.Windows.Forms.ToolStripPanel scribblerTopToolStripPanel;
+        private System.Windows.Forms.ToolStripPanel scribblerLeftToolStripPanel;
+        private System.Windows.Forms.ToolStripPanel scribblerRightToolStripPanel;
         private System.Windows.Forms.ToolStripPanel basToolStripPanel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         internal System.Windows.Forms.ToolStripButton nouveauToolStripButton;
@@ -742,14 +755,15 @@
         internal System.Windows.Forms.ToolStripButton collerToolStripButton;
         internal System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         internal System.Windows.Forms.ToolStripButton aideToolStripButton;
-        internal System.Windows.Forms.ToolStripComboBox policeToolStripComboBox;
-        internal System.Windows.Forms.ToolStripComboBox tailleToolStripComboBox;
+        internal System.Windows.Forms.ToolStripComboBox scribblerToolStripComboBox;
+        internal System.Windows.Forms.ToolStripComboBox scribToolStripComboBox;
         internal System.Windows.Forms.ToolStripButton boldToolStripButton;
         internal System.Windows.Forms.ToolStripButton italicToolStripButton;
         internal System.Windows.Forms.ToolStripButton underlineToolStripButton;
         internal System.Windows.Forms.ToolStripButton alignerGaucheToolStripButton;
         internal System.Windows.Forms.ToolStripButton centrerToolStripButton;
         internal System.Windows.Forms.ToolStripButton alignerDroiteToolStripButton;
+        private System.Windows.Forms.OpenFileDialog scribblerOpenFileDialog;
     }
 }
 

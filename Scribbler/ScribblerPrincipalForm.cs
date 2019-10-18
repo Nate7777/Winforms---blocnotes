@@ -1,7 +1,7 @@
 ﻿/*
         Programmeur: Nathan Comeau,Andy Fleur, Lala et Cabrel
         Date: 10/09/2019
-        But:  Creer une application MDI - Devoir 02 phase B
+        But:  Creer une application MDI - Devoir 02 phase C
  
         Solution: Scribbler.sln
         Projet:   Scribbler.csproj
@@ -17,6 +17,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+
 using gen = Scribbler.ScribblerGen;
 using em = Scribbler.ScribblerGen.MessErreurs;
 
@@ -34,20 +35,41 @@ namespace Scribbler
 
         #region Variables
 
-        private int countFen;
+        private static int countFen;
+        private string filtreString;
+        private string initialdirectory;
+        int Filtreint = 0;
+        string extensionDefautString = "rtf";
 
         #endregion
+
+        #region Load
         private void ScribblerPrincipalForm_Load(object sender, EventArgs e)
         {
             AssocierImages();
             gen.InitMessages();
+
+            filtreString = "Fichiers rtf (*.rtf)|*.rtf|Tous les fichiers (*.*)|*.*";
+            initialdirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+
+            scribblerOpenFileDialog.InitialDirectory = initialdirectory;
+            scribblerOpenFileDialog.AddExtension = true;
+            scribblerOpenFileDialog.CheckFileExists = true;
+            scribblerOpenFileDialog.CheckPathExists = true;
+            scribblerOpenFileDialog.DefaultExt = extensionDefautString;
+            scribblerOpenFileDialog.Title = "Ouvrir un texte";
+            scribblerOpenFileDialog.FilterIndex = Filtreint;
+            scribblerOpenFileDialog.Filter = filtreString;
         }
+
+        #endregion
 
         #endregion
 
         #region Méthodes privées
 
-        #region Association des images
+        #region Insertion des images
         private void AssocierImages()
         {
             nouveauToolStripMenuItem.Image = nouveauToolStripButton.Image;
@@ -92,17 +114,14 @@ namespace Scribbler
         #region Orientation des fenetres MDI
 
         /// <summary>
-        /// Change la disposition des midchildren
+        /// Change la disposition des MDIchildren
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void FenetreMDILayout_Click(object sender, EventArgs e)
         {
             gen.RemoveChecks(fenetreToolStripMenuItem);
-            ToolStripMenuItem oFormat;
-            oFormat = sender as ToolStripMenuItem;
-
-            int pos = fenetreToolStripMenuItem.DropDownItems.IndexOf((ToolStripMenuItem)sender);
+            int pos = fenetreToolStripMenuItem.DropDownItems.IndexOf(sender as ToolStripMenuItem);
             this.LayoutMdi((MdiLayout)pos);
 
             ((ToolStripMenuItem)sender).Checked = true;
@@ -119,48 +138,131 @@ namespace Scribbler
         /// <param name="e"></param>
         private void Panneaux_ControlAdded(object sender, ControlEventArgs e)
         {
-            ToolStripPanel oPanel;
-            oPanel = sender as ToolStripPanel;
-
-
-            if (sender == hautToolStripPanel || sender ==basToolStripPanel)
+            if (sender == scribblerLeftToolStripPanel || sender == scribblerRightToolStripPanel)
             {
-                //Pour menu strip
                 if (e.Control == scribblerMenuStrip)
                 {
-                    scribblerMenuStrip.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
-                    scribblerMenuStrip.TextDirection = ToolStripTextDirection.Horizontal;
-                    menuToolStripComboBox.Visible = true;
+                    questionToolStripComboBox.Visible = false;
+                    scribblerMenuStrip.TextDirection = ToolStripTextDirection.Vertical270;
+
                 }
-                //Pour tool strip
                 else
                 {
-                    policeToolStripComboBox.Visible = true;
-                    tailleToolStripComboBox.Visible = true;
+                    scribblerToolStripComboBox.Visible = false;
+                    scribToolStripComboBox.Visible = false;
+
                 }
             }
-            else 
+            else
             {
-                //Pour menu strip
                 if (e.Control == scribblerMenuStrip)
                 {
-                    scribblerMenuStrip.LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow;
-                    scribblerMenuStrip.TextDirection = ToolStripTextDirection.Vertical90;
-                    menuToolStripComboBox.Visible = false;
+                    questionToolStripComboBox.Visible = true;
+                    scribblerMenuStrip.TextDirection = ToolStripTextDirection.Horizontal;
                 }
-                //Pour tool strip
                 else
                 {
-                    policeToolStripComboBox.Visible = false;
-                    tailleToolStripComboBox.Visible = false;
+                    scribblerToolStripComboBox.Visible = true;
+                    scribToolStripComboBox.Visible = true;
                 }
             }
         }
 
         #endregion
 
+        #region Enregistrer le fichier
+
+        private void Enregistrement_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.MdiChildren.Count() >= 1 && this.ActiveMdiChild
+                    != null)
+                {
+                    ScribblerNoteForm scribbler;
+                    scribbler = this.ActiveMdiChild as ScribblerNoteForm;
+
+                    if (sender == enregistrerToolStripButton || sender ==
+                        enregistrerToolStripMenuItem)
+                        scribbler.Enregistrer();
+                    else
+                        scribbler.EnregistrerSous();
+                }
+                else
+                {
+                    ScribblerNoteForm scribbler = this.ActiveMdiChild as
+                        ScribblerNoteForm;
+                    scribbler.Close();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(gen.MessagesErreurs[(int)em.EmEnregistrementErreur]
+                    + Environment.NewLine.ToString());
+            }
+        }
+
         #endregion
 
+        #region Ouvrir le fichier
 
+        private void Ouvrir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                scribblerOpenFileDialog.InitialDirectory = initialdirectory;
+
+                if (scribblerOpenFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    if (scribblerOpenFileDialog.FileName.EndsWith
+                        ("rtf", StringComparison.CurrentCulture))
+                    {
+                        ScribblerNoteForm scribbler = new
+                            ScribblerNoteForm();
+                        scribbler.Text = scribblerOpenFileDialog.FileName;
+                        scribbler.MdiParent = this;
+                        scribbler.noteRichTextBox.LoadFile
+                            (scribblerOpenFileDialog.FileName);
+                        scribbler.noteRichTextBox.Modified = false;
+                        scribbler.enregistrerBool = true;
+                        scribbler.Show();
+                        scribblerOpenFileDialog.InitialDirectory =
+                            scribblerOpenFileDialog.FileName;
+                        initialdirectory = scribblerOpenFileDialog.FileName;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(gen.MessagesErreurs[(int)em.EmOuvrirErreur] +
+                    Environment.NewLine.ToString());
+
+            }
+        }
+        #endregion
+
+        #endregion
+
+        #region Fermeture du bloc note
+        private void Fermer_Click(object sender, EventArgs e)
+        {
+            ScribblerNoteForm scribbler = this.ActiveMdiChild as
+                ScribblerNoteForm;
+
+            if (this.ActiveControl != null)
+            {
+                scribbler.Close();
+            }
+        }
+        #endregion
+
+        #region Quitter le formulaire
+
+        private void Quitter_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion
     }
 }
