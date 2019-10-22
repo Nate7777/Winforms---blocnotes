@@ -27,10 +27,11 @@ namespace Scribbler
             EmInattendu,
             EmErreurEnregistrer,
             EmOuvrirErreur,
-            EmEnregistrementErreur
+            EmEnregistrementErreur,
+            EmFormatText
         }
 
-        public static string[] MessagesErreurs = new string[5];
+        public static string[] MessagesErreurs = new string[6];
 
         public static void InitMessages()
         {
@@ -42,6 +43,8 @@ namespace Scribbler
                 "Il est impossible d'ouvrir le fichier.";
             MessagesErreurs[(int)em.EmEnregistrementErreur] =
                 "Le fichier ne peut pas etre enregistrer.";
+            MessagesErreurs[(int)em.EmFormatText] =
+                "Erreur lors du formattage.";
         }
 
         #endregion

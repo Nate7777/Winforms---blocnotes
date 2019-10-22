@@ -56,6 +56,69 @@ namespace Scribbler
         }
         #endregion
 
+        #region Selection du texte 
+        private void noteRichTextBox_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ScribblerPrincipalForm parent = this.MdiParent as ScribblerPrincipalForm;
+
+                if(this.noteRichTextBox.SelectionFont != null)
+                {
+                    parent.policeToolStripComboBox.Text = noteRichTextBox.SelectionFont.Name;
+                }
+                else
+                {
+                    parent.policeToolStripComboBox.Text = String.Empty;
+                }
+
+                if(this.noteRichTextBox.SelectionFont != null)
+                {
+                    parent.boldToolStripButton.Checked = noteRichTextBox.SelectionFont.Bold;
+                    parent.italicToolStripButton.Checked = noteRichTextBox.SelectionFont.Italic;
+                    parent.underlineToolStripButton.Checked = noteRichTextBox.SelectionFont.Underline;
+                }
+
+                if(Clipboard.ContainsText() || Clipboard.ContainsImage())
+                {
+                    parent.collerToolStripButton.Enabled = true;
+                }
+                else
+                {
+                    parent.collerToolStripButton.Enabled = false;
+                }
+
+                parent.collerToolStripMenuItem.Enabled = parent.collerToolStripButton.Enabled;
+                parent.copierToolStripMenuItem.Enabled = noteRichTextBox.SelectionLength > 0;
+
+                if(noteRichTextBox.SelectionAlignment == HorizontalAlignment.Left)
+                {
+                    parent.alignerGaucheToolStripButton.Checked = true;
+                    parent.alignerDroiteToolStripButton.Checked = false;
+                    parent.centrerToolStripButton.Checked = false;
+                }
+                else if(noteRichTextBox.SelectionAlignment == HorizontalAlignment.Right)
+                {
+                    parent.alignerGaucheToolStripButton.Checked = false;
+                    parent.alignerDroiteToolStripButton.Checked = true;
+                    parent.centrerToolStripButton.Checked = false;
+                }
+                else
+                {
+                    parent.alignerGaucheToolStripButton.Checked = false;
+                    parent.alignerDroiteToolStripButton.Checked = false;
+                    parent.centrerToolStripButton.Checked = true;
+                }
+
+            }
+            catch(Exception)
+            {
+                MessageBox.Show(gen.MessagesErreurs[(int)em.EmFormatText]);
+            }
+        }
+
+        #endregion
+
         #region Fermeture de la page note
         private void ScribblerNoteForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -153,5 +216,7 @@ namespace Scribbler
         }
 
         #endregion
+
+        
     }
 }

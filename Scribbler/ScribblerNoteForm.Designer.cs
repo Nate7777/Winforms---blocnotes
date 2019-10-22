@@ -40,6 +40,7 @@
             this.noteRichTextBox.Size = new System.Drawing.Size(371, 279);
             this.noteRichTextBox.TabIndex = 0;
             this.noteRichTextBox.Text = "";
+            this.noteRichTextBox.SelectionChanged += new System.EventHandler(this.noteRichTextBox_SelectionChanged);
             // 
             // ScribblerNoteForm
             // 

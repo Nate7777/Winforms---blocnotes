@@ -16,6 +16,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 using gen = Scribbler.ScribblerGen;
@@ -61,6 +62,8 @@ namespace Scribbler
             scribblerOpenFileDialog.Title = "Ouvrir un texte";
             scribblerOpenFileDialog.FilterIndex = Filtreint;
             scribblerOpenFileDialog.Filter = filtreString;
+
+            //policeToolStripComboBox.SelectedIndexChanged -= policeToolStripComboBox_SelectedIndexChanged;
         }
 
         #endregion
@@ -81,6 +84,34 @@ namespace Scribbler
             collerToolStripMenuItem.Image = collerToolStripButton.Image;
             aiderSurScribblerToolStripMenuItem.Image = aideToolStripButton.Image;
         }
+
+        #endregion
+
+        #region Initialiser les polices
+
+        //private void InitPolices()
+        //{
+        //    InstalledFontCollection polices = new InstalledFontCollection();
+
+        //    foreach(FontFamily famille in polices.Families)
+        //    {
+        //        policeToolStripComboBox.Items.Add(famille.Name);
+        //    }
+        //}
+
+        //private void policeToolStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    ScribblerNoteForm oNote = this.ActiveMdiChild as ScribblerNoteForm;
+        //    RichTextBox rtb = oNote.noteRichTextBox;
+
+        //    Font oFont = rtb.SelectionFont;
+
+        //    if(oFont != null)
+        //    {
+        //        rtb.SelectionFont = new Font(policeToolStripComboBox.Text,oFont.Size,oFont.Style);
+        //        this.ActiveMdiChild.ActiveControl.Focus();
+        //    }
+        //}
 
         #endregion
 
@@ -148,8 +179,8 @@ namespace Scribbler
                 }
                 else
                 {
-                    scribblerToolStripComboBox.Visible = false;
-                    scribToolStripComboBox.Visible = false;
+                    policeToolStripComboBox.Visible = false;
+                    tailleToolStripComboBox.Visible = false;
 
                 }
             }
@@ -162,8 +193,8 @@ namespace Scribbler
                 }
                 else
                 {
-                    scribblerToolStripComboBox.Visible = true;
-                    scribToolStripComboBox.Visible = true;
+                    policeToolStripComboBox.Visible = true;
+                    tailleToolStripComboBox.Visible = true;
                 }
             }
         }
@@ -262,6 +293,7 @@ namespace Scribbler
         {
             this.Close();
         }
+
 
         #endregion
     }

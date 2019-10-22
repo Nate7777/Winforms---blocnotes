@@ -77,8 +77,8 @@
             this.collerToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.aideToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.scribblerToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
-            this.scribToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
+            this.policeToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
+            this.tailleToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.boldToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.italicToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.underlineToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -86,10 +86,11 @@
             this.centrerToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.alignerDroiteToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.scribblerStatusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.scribblerToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.scribblerToolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.capsToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.insToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.cultToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.scribblerTopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.scribblerLeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.scribblerRightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
@@ -410,8 +411,8 @@
             this.collerToolStripButton,
             this.toolStripSeparator1,
             this.aideToolStripButton,
-            this.scribblerToolStripComboBox,
-            this.scribToolStripComboBox,
+            this.policeToolStripComboBox,
+            this.tailleToolStripComboBox,
             this.boldToolStripButton,
             this.italicToolStripButton,
             this.underlineToolStripButton,
@@ -420,7 +421,7 @@
             this.alignerDroiteToolStripButton});
             this.scribblerToolStrip.Location = new System.Drawing.Point(5, 32);
             this.scribblerToolStrip.Name = "scribblerToolStrip";
-            this.scribblerToolStrip.Size = new System.Drawing.Size(677, 28);
+            this.scribblerToolStrip.Size = new System.Drawing.Size(640, 28);
             this.scribblerToolStrip.TabIndex = 1;
             this.scribblerToolStrip.Text = "toolStrip1";
             // 
@@ -509,15 +510,21 @@
             this.aideToolStripButton.Size = new System.Drawing.Size(29, 25);
             this.aideToolStripButton.Text = "He&lp";
             // 
-            // scribblerToolStripComboBox
+            // policeToolStripComboBox
             // 
-            this.scribblerToolStripComboBox.Name = "scribblerToolStripComboBox";
-            this.scribblerToolStripComboBox.Size = new System.Drawing.Size(121, 28);
+            this.policeToolStripComboBox.Name = "policeToolStripComboBox";
+            this.policeToolStripComboBox.Size = new System.Drawing.Size(130, 28);
             // 
-            // scribToolStripComboBox
+            // tailleToolStripComboBox
             // 
-            this.scribToolStripComboBox.Name = "scribToolStripComboBox";
-            this.scribToolStripComboBox.Size = new System.Drawing.Size(121, 28);
+            this.tailleToolStripComboBox.Items.AddRange(new object[] {
+            "8",
+            "10",
+            "12",
+            "14",
+            "16"});
+            this.tailleToolStripComboBox.Name = "tailleToolStripComboBox";
+            this.tailleToolStripComboBox.Size = new System.Drawing.Size(75, 28);
             // 
             // boldToolStripButton
             // 
@@ -578,44 +585,46 @@
             this.scribblerStatusStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.scribblerStatusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.scribblerStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripProgressBar1,
-            this.toolStripDropDownButton1,
-            this.toolStripSplitButton1});
+            this.scribblerToolStripStatusLabel,
+            this.scribblerToolStripProgressBar,
+            this.capsToolStripStatusLabel,
+            this.insToolStripStatusLabel,
+            this.cultToolStripStatusLabel});
             this.scribblerStatusStrip.Location = new System.Drawing.Point(0, 0);
             this.scribblerStatusStrip.Name = "scribblerStatusStrip";
-            this.scribblerStatusStrip.Size = new System.Drawing.Size(800, 26);
+            this.scribblerStatusStrip.Size = new System.Drawing.Size(800, 33);
             this.scribblerStatusStrip.TabIndex = 2;
             this.scribblerStatusStrip.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // scribblerToolStripStatusLabel
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(151, 20);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            this.scribblerToolStripStatusLabel.Name = "scribblerToolStripStatusLabel";
+            this.scribblerToolStripStatusLabel.Size = new System.Drawing.Size(169, 27);
+            this.scribblerToolStripStatusLabel.Text = "Créer ou ouvrir une note";
             // 
-            // toolStripProgressBar1
+            // scribblerToolStripProgressBar
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 18);
+            this.scribblerToolStripProgressBar.Name = "scribblerToolStripProgressBar";
+            this.scribblerToolStripProgressBar.Size = new System.Drawing.Size(200, 25);
             // 
-            // toolStripDropDownButton1
+            // capsToolStripStatusLabel
             // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(34, 24);
-            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            this.capsToolStripStatusLabel.AutoSize = false;
+            this.capsToolStripStatusLabel.Name = "capsToolStripStatusLabel";
+            this.capsToolStripStatusLabel.Size = new System.Drawing.Size(50, 27);
             // 
-            // toolStripSplitButton1
+            // insToolStripStatusLabel
             // 
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(39, 24);
-            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
+            this.insToolStripStatusLabel.AutoSize = false;
+            this.insToolStripStatusLabel.Name = "insToolStripStatusLabel";
+            this.insToolStripStatusLabel.Size = new System.Drawing.Size(50, 27);
+            // 
+            // cultToolStripStatusLabel
+            // 
+            this.cultToolStripStatusLabel.AutoSize = false;
+            this.cultToolStripStatusLabel.Name = "cultToolStripStatusLabel";
+            this.cultToolStripStatusLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cultToolStripStatusLabel.Size = new System.Drawing.Size(70, 27);
             // 
             // scribblerTopToolStripPanel
             // 
@@ -636,7 +645,7 @@
             this.scribblerLeftToolStripPanel.Name = "scribblerLeftToolStripPanel";
             this.scribblerLeftToolStripPanel.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.scribblerLeftToolStripPanel.RowMargin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.scribblerLeftToolStripPanel.Size = new System.Drawing.Size(0, 424);
+            this.scribblerLeftToolStripPanel.Size = new System.Drawing.Size(0, 417);
             this.scribblerLeftToolStripPanel.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.Panneaux_ControlAdded);
             // 
             // scribblerRightToolStripPanel
@@ -646,18 +655,18 @@
             this.scribblerRightToolStripPanel.Name = "scribblerRightToolStripPanel";
             this.scribblerRightToolStripPanel.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.scribblerRightToolStripPanel.RowMargin = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.scribblerRightToolStripPanel.Size = new System.Drawing.Size(0, 424);
+            this.scribblerRightToolStripPanel.Size = new System.Drawing.Size(0, 417);
             this.scribblerRightToolStripPanel.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.Panneaux_ControlAdded);
             // 
             // basToolStripPanel
             // 
             this.basToolStripPanel.Controls.Add(this.scribblerStatusStrip);
             this.basToolStripPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.basToolStripPanel.Location = new System.Drawing.Point(0, 424);
+            this.basToolStripPanel.Location = new System.Drawing.Point(0, 417);
             this.basToolStripPanel.Name = "basToolStripPanel";
             this.basToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.basToolStripPanel.RowMargin = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.basToolStripPanel.Size = new System.Drawing.Size(800, 26);
+            this.basToolStripPanel.Size = new System.Drawing.Size(800, 33);
             this.basToolStripPanel.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.Panneaux_ControlAdded);
             // 
             // scribblerOpenFileDialog
@@ -711,8 +720,6 @@
         private System.Windows.Forms.ToolStripMenuItem quitterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem couperToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem copierToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem collerToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem effacerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sélectionnerToutToolStripMenuItem;
@@ -736,10 +743,8 @@
         private System.Windows.Forms.ToolStripComboBox questionToolStripComboBox;
         private System.Windows.Forms.ToolStrip scribblerToolStrip;
         private System.Windows.Forms.StatusStrip scribblerStatusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
-        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
+        private System.Windows.Forms.ToolStripStatusLabel scribblerToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripProgressBar scribblerToolStripProgressBar;
         private System.Windows.Forms.ToolStripPanel scribblerTopToolStripPanel;
         private System.Windows.Forms.ToolStripPanel scribblerLeftToolStripPanel;
         private System.Windows.Forms.ToolStripPanel scribblerRightToolStripPanel;
@@ -755,8 +760,8 @@
         internal System.Windows.Forms.ToolStripButton collerToolStripButton;
         internal System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         internal System.Windows.Forms.ToolStripButton aideToolStripButton;
-        internal System.Windows.Forms.ToolStripComboBox scribblerToolStripComboBox;
-        internal System.Windows.Forms.ToolStripComboBox scribToolStripComboBox;
+        internal System.Windows.Forms.ToolStripComboBox policeToolStripComboBox;
+        internal System.Windows.Forms.ToolStripComboBox tailleToolStripComboBox;
         internal System.Windows.Forms.ToolStripButton boldToolStripButton;
         internal System.Windows.Forms.ToolStripButton italicToolStripButton;
         internal System.Windows.Forms.ToolStripButton underlineToolStripButton;
@@ -764,6 +769,11 @@
         internal System.Windows.Forms.ToolStripButton centrerToolStripButton;
         internal System.Windows.Forms.ToolStripButton alignerDroiteToolStripButton;
         private System.Windows.Forms.OpenFileDialog scribblerOpenFileDialog;
+        private System.Windows.Forms.ToolStripStatusLabel capsToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel insToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel cultToolStripStatusLabel;
+        internal System.Windows.Forms.ToolStripMenuItem collerToolStripMenuItem;
+        internal System.Windows.Forms.ToolStripMenuItem copierToolStripMenuItem;
     }
 }
 
