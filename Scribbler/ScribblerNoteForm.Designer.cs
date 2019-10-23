@@ -35,22 +35,26 @@
             // noteRichTextBox
             // 
             this.noteRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.noteRichTextBox.HideSelection = false;
             this.noteRichTextBox.Location = new System.Drawing.Point(0, 0);
+            this.noteRichTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.noteRichTextBox.Name = "noteRichTextBox";
-            this.noteRichTextBox.Size = new System.Drawing.Size(371, 279);
+            this.noteRichTextBox.Size = new System.Drawing.Size(278, 227);
             this.noteRichTextBox.TabIndex = 0;
             this.noteRichTextBox.Text = "";
             this.noteRichTextBox.SelectionChanged += new System.EventHandler(this.noteRichTextBox_SelectionChanged);
             // 
             // ScribblerNoteForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(371, 279);
+            this.ClientSize = new System.Drawing.Size(278, 227);
             this.Controls.Add(this.noteRichTextBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ScribblerNoteForm";
             this.Text = "Note";
+            this.Activated += new System.EventHandler(this.ScribblerNoteForm_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScribblerNoteForm_FormClosing);
             this.ResumeLayout(false);
 

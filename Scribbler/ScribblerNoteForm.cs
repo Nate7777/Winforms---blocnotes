@@ -1,14 +1,14 @@
 ﻿/*
-        Programmeur: Nathan Comeau
-        Date: 9/26/2019
-        But:  Générer un rapport bien centré à partir des informations sur le formulaire 
+        Programmeur: Nathan Comeau,Andy Fleur, Lala et Cabrel
+        Date: 10/09/2019
+        But:  Creer une application MDI - Devoir 02 phase C
  
         Solution: Scribbler.sln
         Projet:   Scribbler.csproj
         Classe:   ScribblerNoteForm.cs
  
  */
-using System;
+ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -64,69 +64,6 @@ namespace Scribbler
             }
 
         }
-        #endregion
-
-        #region Selection du texte 
-        private void noteRichTextBox_SelectionChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                ScribblerPrincipalForm parent = this.MdiParent as ScribblerPrincipalForm;
-
-                if(this.noteRichTextBox.SelectionFont != null)
-                {
-                    parent.policeToolStripComboBox.Text = noteRichTextBox.SelectionFont.Name;
-                }
-                else
-                {
-                    parent.policeToolStripComboBox.Text = String.Empty;
-                }
-
-                if(this.noteRichTextBox.SelectionFont != null)
-                {
-                    parent.boldToolStripButton.Checked = noteRichTextBox.SelectionFont.Bold;
-                    parent.italicToolStripButton.Checked = noteRichTextBox.SelectionFont.Italic;
-                    parent.underlineToolStripButton.Checked = noteRichTextBox.SelectionFont.Underline;
-                }
-
-                if(Clipboard.ContainsText() || Clipboard.ContainsImage())
-                {
-                    parent.collerToolStripButton.Enabled = true;
-                }
-                else
-                {
-                    parent.collerToolStripButton.Enabled = false;
-                }
-
-                parent.collerToolStripMenuItem.Enabled = parent.collerToolStripButton.Enabled;
-                parent.copierToolStripMenuItem.Enabled = noteRichTextBox.SelectionLength > 0;
-
-                if(noteRichTextBox.SelectionAlignment == HorizontalAlignment.Left)
-                {
-                    parent.alignerGaucheToolStripButton.Checked = true;
-                    parent.alignerDroiteToolStripButton.Checked = false;
-                    parent.centrerToolStripButton.Checked = false;
-                }
-                else if(noteRichTextBox.SelectionAlignment == HorizontalAlignment.Right)
-                {
-                    parent.alignerGaucheToolStripButton.Checked = false;
-                    parent.alignerDroiteToolStripButton.Checked = true;
-                    parent.centrerToolStripButton.Checked = false;
-                }
-                else
-                {
-                    parent.alignerGaucheToolStripButton.Checked = false;
-                    parent.alignerDroiteToolStripButton.Checked = false;
-                    parent.centrerToolStripButton.Checked = true;
-                }
-
-            }
-            catch(Exception)
-            {
-                MessageBox.Show(gen.MessagesErreurs[(int)em.EmFormatText]);
-            }
-        }
-
         #endregion
 
         #region Fermeture de la page note
@@ -227,6 +164,102 @@ namespace Scribbler
 
         #endregion
 
-        
+        #region Selection du texte 
+        private void noteRichTextBox_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ScribblerPrincipalForm parent = this.MdiParent as ScribblerPrincipalForm;
+
+                if (this.noteRichTextBox.SelectionFont != null)
+                {
+                    //parent.policeToolStripComboBox.Text = noteRichTextBox.SelectionFont.Name;
+                    parent.boldToolStripButton.Checked = noteRichTextBox.SelectionFont.Bold;
+                    parent.italicToolStripButton.Checked = noteRichTextBox.SelectionFont.Italic;
+                    parent.underlineToolStripButton.Checked = noteRichTextBox.SelectionFont.Underline;
+                }
+                else
+                {
+                   // parent.policeToolStripComboBox.Text = String.Empty;
+                }
+
+                if (Clipboard.ContainsText() || Clipboard.ContainsImage())
+                {
+                    parent.collerToolStripButton.Enabled = true;
+                }
+                else
+                {
+                    parent.collerToolStripButton.Enabled = false;
+                   
+                }
+              
+                parent.collerToolStripMenuItem.Enabled = parent.collerToolStripButton.Enabled;
+                parent.copierToolStripMenuItem.Enabled = noteRichTextBox.SelectionLength > 0;
+                parent.copierToolStripButton.Enabled = noteRichTextBox.SelectionLength > 0;
+                parent.couperToolStripButton.Enabled = noteRichTextBox.SelectionLength > 0;
+                parent.couperToolStripMenuItem.Enabled = noteRichTextBox.SelectionLength > 0;
+                parent.effacerToolStripMenuItem.Enabled = noteRichTextBox.SelectionLength > 0;
+                parent.selectionnerToutToolStripMenuItem.Enabled = noteRichTextBox.SelectionLength > 0;
+
+                if (noteRichTextBox.SelectionAlignment == HorizontalAlignment.Left)
+                {
+                    parent.alignerGaucheToolStripButton.Checked = true;
+                    parent.alignerDroiteToolStripButton.Checked = false;
+                    parent.centrerToolStripButton.Checked = false;
+                }
+                else if (noteRichTextBox.SelectionAlignment == HorizontalAlignment.Right)
+                {
+                    parent.alignerGaucheToolStripButton.Checked = false;
+                    parent.alignerDroiteToolStripButton.Checked = true;
+                    parent.centrerToolStripButton.Checked = false;
+                }
+                else
+                {
+                    parent.alignerGaucheToolStripButton.Checked = false;
+                    parent.alignerDroiteToolStripButton.Checked = false;
+                    parent.centrerToolStripButton.Checked = true;
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(gen.MessagesErreurs[(int)em.EmFormatText]);
+            }
+        }
+
+        #endregion
+
+        #region Note Activated
+
+        private void ScribblerNoteForm_Activated(object sender, EventArgs e)
+        {
+            noteRichTextBox_SelectionChanged(null, null);
+        }
+
+        #endregion
+
+        #region Changer Atrributs
+        public void ChangerAttributFont(FontStyle style)
+        {
+            try
+            {
+
+                if (noteRichTextBox.SelectionFont != null)
+                {
+                    if (noteRichTextBox.SelectionFont.FontFamily.IsStyleAvailable(style))
+                    {
+                        noteRichTextBox.SelectionFont = new Font(noteRichTextBox.SelectionFont, noteRichTextBox.SelectionFont.Style ^ style);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(gen.MessagesErreurs[(int)em.EmErreurIndetermine]);
+            }
+        }
+
+        #endregion
+
+       
     }
 }

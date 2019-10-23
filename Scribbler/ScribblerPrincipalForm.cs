@@ -1,7 +1,7 @@
 ﻿/*
         Programmeur: Nathan Comeau,Andy Fleur, Lala et Cabrel
         Date: 10/09/2019
-        But:  Creer une application MDI - Devoir 02 phase D
+        But:  Creer une application MDI - Devoir 02 phase C
  
         Solution: Scribbler.sln
         Projet:   Scribbler.csproj
@@ -16,7 +16,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Drawing.Text;
 using System.Windows.Forms;
 
 using gen = Scribbler.ScribblerGen;
@@ -49,6 +48,7 @@ namespace Scribbler
         {
             AssocierImages();
             gen.InitMessages();
+            DesactiverOperationsMenusBarreOutils();
 
             filtreString = "Fichiers rtf (*.rtf)|*.rtf|Tous les fichiers (*.*)|*.*";
             initialdirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -62,8 +62,6 @@ namespace Scribbler
             scribblerOpenFileDialog.Title = "Ouvrir un texte";
             scribblerOpenFileDialog.FilterIndex = Filtreint;
             scribblerOpenFileDialog.Filter = filtreString;
-
-            //policeToolStripComboBox.SelectedIndexChanged -= policeToolStripComboBox_SelectedIndexChanged;
         }
 
         #endregion
@@ -87,34 +85,6 @@ namespace Scribbler
 
         #endregion
 
-        #region Initialiser les polices
-
-        //private void InitPolices()
-        //{
-        //    InstalledFontCollection polices = new InstalledFontCollection();
-
-        //    foreach(FontFamily famille in polices.Families)
-        //    {
-        //        policeToolStripComboBox.Items.Add(famille.Name);
-        //    }
-        //}
-
-        //private void policeToolStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    ScribblerNoteForm oNote = this.ActiveMdiChild as ScribblerNoteForm;
-        //    RichTextBox rtb = oNote.noteRichTextBox;
-
-        //    Font oFont = rtb.SelectionFont;
-
-        //    if(oFont != null)
-        //    {
-        //        rtb.SelectionFont = new Font(policeToolStripComboBox.Text,oFont.Size,oFont.Style);
-        //        this.ActiveMdiChild.ActiveControl.Focus();
-        //    }
-        //}
-
-        #endregion
-
         #region Creation d'une nouvelle note
 
         /// <summary>
@@ -128,6 +98,8 @@ namespace Scribbler
             countFen++;
             try
             {
+                ActiverOperationsMenusBarreOutils();
+
                 Note = new ScribblerNoteForm();
                 Note.MdiParent = this;
                 Note.Show();
@@ -180,7 +152,7 @@ namespace Scribbler
                 else
                 {
                     policeToolStripComboBox.Visible = false;
-                    tailleToolStripComboBox.Visible = false;
+                    scribToolStripComboBox.Visible = false;
 
                 }
             }
@@ -194,7 +166,7 @@ namespace Scribbler
                 else
                 {
                     policeToolStripComboBox.Visible = true;
-                    tailleToolStripComboBox.Visible = true;
+                    scribToolStripComboBox.Visible = true;
                 }
             }
         }
@@ -241,6 +213,8 @@ namespace Scribbler
         {
             try
             {
+                ActiverOperationsMenusBarreOutils();
+
                 scribblerOpenFileDialog.InitialDirectory = initialdirectory;
 
                 if (scribblerOpenFileDialog.ShowDialog() == DialogResult.OK)
@@ -272,71 +246,6 @@ namespace Scribbler
         }
         #endregion
 
-        #region Desactiver les barre d'outils
-        void DesactiverOperationsMenusBarreOutils()
-        {
-            //Menus
-            foreach (ToolStripMenuItem item in scribblerMenuStrip.Items)
-            {
-                if (item is ToolStripMenuItem)
-                {
-                    foreach (ToolStripMenuItem drowpdownMenuItem in item.DropDownItems)
-                    {
-                        if (drowpdownMenuItem is ToolStripMenuItem)
-                        {
-                            drowpdownMenuItem.Enabled = false;
-                        }
-                    }
-                }
-            }
-
-            //Barre d'outils
-            foreach (ToolStripItem item in scribblerToolStrip.Items)
-            {
-                item.Enabled = false;
-            }
-
-            nouveauToolStripButton.Enabled = true;
-            ouvrirToolStripButton.Enabled = true;
-            nouveauToolStripButton.Enabled = true;
-            ouvrirToolStripButton.Enabled = true;
-        }
-
-        #endregion
-
-        #region Activer les barres d'outils
-
-        void ActiverOperationsMenusBarreOutils()
-        {
-            //Menus
-            foreach (ToolStripMenuItem item in scribblerMenuStrip.Items)
-            {
-                if (item is ToolStripMenuItem)
-                {
-                    foreach (ToolStripMenuItem drowpdownMenuItem in item.DropDownItems)
-                    {
-                        if (drowpdownMenuItem is ToolStripMenuItem)
-                        {
-                            drowpdownMenuItem.Enabled = true;
-                        }
-                    }
-                }
-            }
-
-            //Barre d'outils
-            foreach (ToolStripItem item in scribblerToolStrip.Items)
-            {
-                item.Enabled = true;
-            }
-
-            nouveauToolStripButton.Enabled = false;
-            ouvrirToolStripButton.Enabled = false;
-            nouveauToolStripButton.Enabled = false;
-            ouvrirToolStripButton.Enabled = false;
-        }
-
-        #endregion
-
         #endregion
 
         #region Fermeture du bloc note
@@ -359,7 +268,207 @@ namespace Scribbler
             this.Close();
         }
 
+        #endregion
+
+        #region Edition
+        private void Edition(object sender, EventArgs e)
+        {
+            try
+            {
+                RichTextBox oRichtextBox = (this.ActiveMdiChild as
+                    ScribblerNoteForm).noteRichTextBox;
+
+                if (sender == couperToolStripMenuItem || sender == couperToolStripButton)
+                    oRichtextBox.Cut();
+                else if (sender == copierToolStripMenuItem || sender == copierToolStripButton)
+                    oRichtextBox.Copy();
+                else if (sender == collerToolStripMenuItem || sender == collerToolStripButton)
+                    oRichtextBox.Paste();
+                else if (sender == effacerToolStripMenuItem)
+                    oRichtextBox.Clear();
+                else if (sender == selectionnerToutToolStripMenuItem)
+                    oRichtextBox.SelectAll();
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(gen.MessagesErreurs[(int)em.EmErreurEdition] +
+                   Environment.NewLine.ToString());
+            }
+        }
 
         #endregion
+
+        #region MDIChilActivated
+        private void ScribblerPrincipalForm_MdiChildActivate(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild == null)
+            {
+                DesactiverOperationsMenusBarreOutils();
+                //if(this.OwnedForms.Length > 0)
+                //{
+                //    this.OwnedForms[0].Close();
+                //}
+            }
+        }
+
+        #endregion
+
+        #region Style de police
+        private void StylePolice(object sender, EventArgs e)
+        {
+            try
+            {
+                ScribblerNoteForm oNote;
+                oNote = (ScribblerNoteForm)this.ActiveMdiChild;
+
+                if (sender == boldToolStripButton)
+                    oNote.ChangerAttributFont(FontStyle.Bold);
+                else if (sender == italicToolStripButton)
+                    oNote.ChangerAttributFont(FontStyle.Italic);
+                else
+                    oNote.ChangerAttributFont(FontStyle.Underline);
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(gen.MessagesErreurs[(int)em.EmStylePolice] +
+                   Environment.NewLine.ToString());
+            }
+        }
+
+        #endregion
+
+        #region Alignement
+        private void Alignement(object sender, EventArgs e)
+        {
+            try
+            {
+                ScribblerNoteForm oNote;
+                oNote = (ScribblerNoteForm)this.ActiveMdiChild;
+
+                if (sender == alignerGaucheToolStripButton)
+                {
+                    oNote.noteRichTextBox.SelectionAlignment = HorizontalAlignment.Left;
+                    alignerDroiteToolStripButton.Checked = false;
+                    centrerToolStripButton.Checked = false;
+
+                }
+                else if(sender == alignerDroiteToolStripButton)
+                {
+                    oNote.noteRichTextBox.SelectionAlignment = HorizontalAlignment.Right;
+                    alignerDroiteToolStripButton.Checked = false;
+                    centrerToolStripButton.Checked = false;
+                }
+                else
+                {
+                    oNote.noteRichTextBox.SelectionAlignment = HorizontalAlignment.Center;
+                    alignerDroiteToolStripButton.Checked = false;
+                    alignerGaucheToolStripButton.Checked = false;
+                }
+
+
+            }
+            catch(Exception)
+            {
+                MessageBox.Show(gen.MessagesErreurs[(int)em.EmErreurIndetermine]);
+            }
+        }
+        #endregion
+
+        #region Rechercher
+        private void RechercherToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.OwnedForms.Length == 0) // pas de fenetre de recherche
+                {
+                    RechercherForm rf = new RechercherForm();
+                    rf.Owner = this;
+                    rf.Mot = (this.ActiveMdiChild.ActiveControl as RichTextBox).SelectedText;
+                    rf.Show();
+                }
+            }
+            catch(Exception)
+            {
+
+            }
+        }
+
+        #endregion
+
+        #region Desactiver les barre d'outils
+        void DesactiverOperationsMenusBarreOutils()
+        {
+            //Menus
+            foreach (ToolStripItem item in scribblerMenuStrip.Items)
+            {
+                if (item is ToolStripMenuItem)
+                {
+                    foreach (ToolStripItem drowpdownMenuItem in ((ToolStripMenuItem)item).DropDownItems)
+                    {
+                        if (drowpdownMenuItem is ToolStripMenuItem)
+                        {
+                            ((ToolStripMenuItem)drowpdownMenuItem).Enabled = false;
+                        }
+                    }
+                }
+            }
+
+            //Barre d'outils
+            foreach (ToolStripItem item in scribblerToolStrip.Items)
+            {
+                item.Enabled = false;
+            }
+
+            nouveauToolStripButton.Enabled = true;
+            ouvrirToolStripButton.Enabled = true;
+            nouveauToolStripButton.Enabled = true;
+            ouvrirToolStripButton.Enabled = true;
+            quitterToolStripMenuItem.Enabled = true;
+            aideToolStripMenuItem.Enabled = true;
+        }
+
+        #endregion
+
+        #region Activer les barres d'outils
+
+        void ActiverOperationsMenusBarreOutils()
+        {
+            //Menus
+            foreach (ToolStripItem item in scribblerMenuStrip.Items)
+            {
+                if (item is ToolStripMenuItem)
+                {
+                    foreach (ToolStripItem drowpdownMenuItem in ((ToolStripMenuItem)item).DropDownItems)
+                    {
+                        if (drowpdownMenuItem is ToolStripMenuItem)
+                        {
+                            ((ToolStripMenuItem)drowpdownMenuItem).Enabled = true;
+                        }
+                    }
+                }
+            }
+
+            //Barre d'outils
+            foreach (ToolStripItem item in scribblerToolStrip.Items)
+            {
+                item.Enabled = true;
+            }
+            copierToolStripMenuItem.Enabled = false;
+            copierToolStripButton.Enabled = false;
+            couperToolStripMenuItem.Enabled = false;
+            couperToolStripButton.Enabled = false;
+            effacerToolStripMenuItem.Enabled = false;
+
+            if (Clipboard.ContainsText() || Clipboard.ContainsImage())
+                collerToolStripButton.Enabled = true;
+            else
+                collerToolStripButton.Enabled = true;
+        }
+
+        #endregion
+
+
     }
 }

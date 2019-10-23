@@ -1,11 +1,11 @@
 ﻿/*
         Programmeur: Nathan Comeau,Andy Fleur, Lala et Cabrel
         Date: 10/09/2019
-        But:  Creer une application MDI - Devoir 02 phase D
+        But:  Creer une application MDI - Devoir 02 phase C
  
         Solution: Scribbler.sln
         Projet:   Scribbler.csproj
-        Classe:   ScribblerPrincipalForm.cs
+        Classe:   ScribblerGenForm.cs
  
  */
 using System;
@@ -13,7 +13,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Drawing;
 using em = Scribbler.ScribblerGen.MessErreurs;
+using note = Scribbler.ScribblerNoteForm;
 
 namespace Scribbler
 {
@@ -28,10 +30,13 @@ namespace Scribbler
             EmErreurEnregistrer,
             EmOuvrirErreur,
             EmEnregistrementErreur,
-            EmFormatText
+            EmErreurIndetermine,
+            EmFormatText,
+            EmErreurEdition,
+            EmStylePolice
         }
 
-        public static string[] MessagesErreurs = new string[6];
+        public static string[] MessagesErreurs = new string[9];
 
         public static void InitMessages()
         {
@@ -43,8 +48,13 @@ namespace Scribbler
                 "Il est impossible d'ouvrir le fichier.";
             MessagesErreurs[(int)em.EmEnregistrementErreur] =
                 "Le fichier ne peut pas etre enregistrer.";
+            MessagesErreurs[(int)em.EmErreurIndetermine] = "Erreur indéterminée";
             MessagesErreurs[(int)em.EmFormatText] =
                 "Erreur lors du formattage.";
+            MessagesErreurs[(int)em.EmErreurEdition] =
+               "Erreur lors de l'édition";
+            MessagesErreurs[(int)em.EmStylePolice] =
+               "Erreur lors changement de police";
         }
 
         #endregion
@@ -52,9 +62,9 @@ namespace Scribbler
         #region Menu Mutuellement exclusif
         public static void RemoveChecks(ToolStripMenuItem oToolStripMenuItem)
         {
-           foreach(ToolStripItem oToolStripItem in oToolStripMenuItem.DropDownItems)
-           {
-                if(oToolStripItem is ToolStripMenuItem)
+            foreach (ToolStripItem oToolStripItem in oToolStripMenuItem.DropDownItems)
+            {
+                if (oToolStripItem is ToolStripMenuItem)
                 {
                     ((ToolStripMenuItem)oToolStripItem).Checked = false;
 
@@ -63,9 +73,11 @@ namespace Scribbler
                     if (!oSousMenu.IsMdiWindowListEntry)
                         oSousMenu.Checked = false;
                 }
-           }
+            }
         }
 
         #endregion
+
+        
     }
 }
