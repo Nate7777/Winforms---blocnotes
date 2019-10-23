@@ -1,7 +1,7 @@
 ﻿/*
         Programmeur: Nathan Comeau,Andy Fleur, Lala et Cabrel
         Date: 10/09/2019
-        But:  Creer une application MDI - Devoir 02 phase C
+        But:  Creer une application MDI - Devoir 02 phase D
  
         Solution: Scribbler.sln
         Projet:   Scribbler.csproj

@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+        Programmeur: Nathan Comeau
+        Date: 9/26/2019
+        But:  Générer un rapport bien centré à partir des informations sur le formulaire 
+ 
+        Solution: Scribbler.sln
+        Projet:   Scribbler.csproj
+        Classe:   ScribblerNoteForm.cs
+ 
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

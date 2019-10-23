@@ -1,7 +1,7 @@
 ﻿/*
         Programmeur: Nathan Comeau,Andy Fleur, Lala et Cabrel
         Date: 10/09/2019
-        But:  Creer une application MDI - Devoir 02 phase C
+        But:  Creer une application MDI - Devoir 02 phase D
  
         Solution: Scribbler.sln
         Projet:   Scribbler.csproj
@@ -270,6 +270,71 @@ namespace Scribbler
 
             }
         }
+        #endregion
+
+        #region Desactiver les barre d'outils
+        void DesactiverOperationsMenusBarreOutils()
+        {
+            //Menus
+            foreach (ToolStripMenuItem item in scribblerMenuStrip.Items)
+            {
+                if (item is ToolStripMenuItem)
+                {
+                    foreach (ToolStripMenuItem drowpdownMenuItem in item.DropDownItems)
+                    {
+                        if (drowpdownMenuItem is ToolStripMenuItem)
+                        {
+                            drowpdownMenuItem.Enabled = false;
+                        }
+                    }
+                }
+            }
+
+            //Barre d'outils
+            foreach (ToolStripItem item in scribblerToolStrip.Items)
+            {
+                item.Enabled = false;
+            }
+
+            nouveauToolStripButton.Enabled = true;
+            ouvrirToolStripButton.Enabled = true;
+            nouveauToolStripButton.Enabled = true;
+            ouvrirToolStripButton.Enabled = true;
+        }
+
+        #endregion
+
+        #region Activer les barres d'outils
+
+        void ActiverOperationsMenusBarreOutils()
+        {
+            //Menus
+            foreach (ToolStripMenuItem item in scribblerMenuStrip.Items)
+            {
+                if (item is ToolStripMenuItem)
+                {
+                    foreach (ToolStripMenuItem drowpdownMenuItem in item.DropDownItems)
+                    {
+                        if (drowpdownMenuItem is ToolStripMenuItem)
+                        {
+                            drowpdownMenuItem.Enabled = true;
+                        }
+                    }
+                }
+            }
+
+            //Barre d'outils
+            foreach (ToolStripItem item in scribblerToolStrip.Items)
+            {
+                item.Enabled = true;
+            }
+
+            nouveauToolStripButton.Enabled = false;
+            ouvrirToolStripButton.Enabled = false;
+            nouveauToolStripButton.Enabled = false;
+            ouvrirToolStripButton.Enabled = false;
+        }
+
         #endregion
 
         #endregion
