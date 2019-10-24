@@ -18,3 +18,13 @@ C:\Users\Lala Sy\Downloads\Winforms---blocnotes-master (1)\Winforms---blocnotes-
 C:\Users\Lala Sy\Downloads\Winforms---blocnotes-master (1)\Winforms---blocnotes-master\Scribbler\obj\Debug\Scribbler.csproj.GenerateResource.cache
 C:\Users\Lala Sy\Downloads\Winforms---blocnotes-master (1)\Winforms---blocnotes-master\Scribbler\obj\Debug\Scribbler.csproj.CoreCompileInputs.cache
 C:\Users\Lala Sy\Downloads\Winforms---blocnotes-master (1)\Winforms---blocnotes-master\Scribbler\obj\Debug\Scribbler.RechercherForm.resources
+C:\Users\nacom\Desktop\Winforms---blocnotes-master\Scribbler\bin\Debug\Scribbler.exe
+C:\Users\nacom\Desktop\Winforms---blocnotes-master\Scribbler\bin\Debug\Scribbler.pdb
+C:\Users\nacom\Desktop\Winforms---blocnotes-master\Scribbler\obj\Debug\Scribbler.csprojAssemblyReference.cache
+C:\Users\nacom\Desktop\Winforms---blocnotes-master\Scribbler\obj\Debug\Scribbler.Properties.Resources.resources
+C:\Users\nacom\Desktop\Winforms---blocnotes-master\Scribbler\obj\Debug\Scribbler.RechercherForm.resources
+C:\Users\nacom\Desktop\Winforms---blocnotes-master\Scribbler\obj\Debug\Scribbler.ScribblerNoteForm.resources
+C:\Users\nacom\Desktop\Winforms---blocnotes-master\Scribbler\obj\Debug\Scribbler.ScribblerPrincipalForm.resources
+C:\Users\nacom\Desktop\Winforms---blocnotes-master\Scribbler\obj\Debug\Scribbler.csproj.GenerateResource.cache
+C:\Users\nacom\Desktop\Winforms---blocnotes-master\Scribbler\obj\Debug\Scribbler.exe
+C:\Users\nacom\Desktop\Winforms---blocnotes-master\Scribbler\obj\Debug\Scribbler.pdb

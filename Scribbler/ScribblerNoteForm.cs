@@ -29,6 +29,7 @@ namespace Scribbler
         private static string filtreString;
         private static string initialDirectory;
         public Boolean enregistrerBool;
+        public Boolean inserer;
 
         #endregion
 
@@ -64,6 +65,22 @@ namespace Scribbler
             }
 
         }
+        #endregion
+
+        #region Propriété ModeInserer
+
+        public Boolean ModeInserer
+        {
+            get
+            {
+                return inserer;
+            }
+            set
+            {
+                inserer = value;
+            }
+        }
+
         #endregion
 
         #region Fermeture de la page note

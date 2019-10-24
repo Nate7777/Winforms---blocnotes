@@ -17,6 +17,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Globalization;
 
 using gen = Scribbler.ScribblerGen;
 using em = Scribbler.ScribblerGen.MessErreurs;
@@ -62,6 +63,16 @@ namespace Scribbler
             scribblerOpenFileDialog.Title = "Ouvrir un texte";
             scribblerOpenFileDialog.FilterIndex = Filtreint;
             scribblerOpenFileDialog.Filter = filtreString;
+
+            //Status strip labels
+            noteToolStripStatusLabel.Text = "Créer ou ouvrir une note";
+
+            cultureToolStripStatusLabel.Text = CultureInfo.CurrentCulture.NativeName;
+
+            if(System.Console.CapsLock)
+            {
+                majToolStripStatusLabel.Text = "MAJ";
+            }
         }
 
         #endregion
@@ -104,6 +115,8 @@ namespace Scribbler
                 Note.MdiParent = this;
                 Note.Show();
                 Note.Text += countFen;
+
+                Note.ModeInserer = true; //Mode inserer actif
 
             }
             catch (Exception)
@@ -234,8 +247,12 @@ namespace Scribbler
                         scribblerOpenFileDialog.InitialDirectory =
                             scribblerOpenFileDialog.FileName;
                         initialdirectory = scribblerOpenFileDialog.FileName;
+
+                        scribbler.ModeInserer = true; // Mode inserer actif
                     }
                 }
+
+                
             }
             catch (Exception)
             {
@@ -244,8 +261,6 @@ namespace Scribbler
 
             }
         }
-        #endregion
-
         #endregion
 
         #region Fermeture du bloc note
@@ -305,11 +320,25 @@ namespace Scribbler
             if (this.ActiveMdiChild == null)
             {
                 DesactiverOperationsMenusBarreOutils();
+                noteToolStripStatusLabel.Text = "Créer ou ouvrir une note";
                 //if(this.OwnedForms.Length > 0)
                 //{
                 //    this.OwnedForms[0].Close();
                 //}
             }
+            else
+            {
+                if(((ScribblerNoteForm)this.ActiveMdiChild).ModeInserer)
+                {
+                    insToolStripStatusLabel.Text = "INS";
+                }
+                else
+                {
+                    insToolStripStatusLabel.Text = "RFP";
+                }
+                noteToolStripStatusLabel.Text = this.ActiveMdiChild.Text;
+            }
+            
         }
 
         #endregion
@@ -467,8 +496,39 @@ namespace Scribbler
                 collerToolStripButton.Enabled = true;
         }
 
+
         #endregion
 
+        #region Key down pour touche MAJ
 
+        private void ScribblerPrincipalForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(Control.IsKeyLocked(Keys.CapsLock))
+            {
+                majToolStripStatusLabel.Text = "MAJ";
+            }
+            else
+            {
+                majToolStripStatusLabel.Text = "";
+            }
+
+            if(e.KeyCode == Keys.Insert)
+            {
+                if(insToolStripStatusLabel.Text == "INS")
+                {
+                    insToolStripStatusLabel.Text = "RFP";
+                    (this.ActiveMdiChild as ScribblerNoteForm).ModeInserer = false;
+                }
+            }
+            else
+            {
+                insToolStripStatusLabel.Text = "INS";
+                (this.ActiveMdiChild as ScribblerNoteForm).ModeInserer = true;
+            }
+        }
+
+        #endregion
+
+        #endregion
     }
 }
