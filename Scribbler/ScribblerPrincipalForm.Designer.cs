@@ -88,14 +88,14 @@
             this.scribblerStatusStrip = new System.Windows.Forms.StatusStrip();
             this.noteToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.majToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.insToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.cultureToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.scribblerTopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.scribblerLeftToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.scribblerRightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.basToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.scribblerOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.majToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.insToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.cultureToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.scribblerMenuStrip.SuspendLayout();
             this.scribblerToolStrip.SuspendLayout();
             this.scribblerStatusStrip.SuspendLayout();
@@ -614,6 +614,7 @@
             // noteToolStripStatusLabel
             // 
             this.noteToolStripStatusLabel.AutoSize = false;
+            this.noteToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
             this.noteToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
             this.noteToolStripStatusLabel.Name = "noteToolStripStatusLabel";
             this.noteToolStripStatusLabel.Size = new System.Drawing.Size(170, 22);
@@ -623,6 +624,33 @@
             // 
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
             this.toolStripProgressBar1.Size = new System.Drawing.Size(250, 20);
+            // 
+            // majToolStripStatusLabel
+            // 
+            this.majToolStripStatusLabel.AutoSize = false;
+            this.majToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
+            this.majToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.majToolStripStatusLabel.Name = "majToolStripStatusLabel";
+            this.majToolStripStatusLabel.Size = new System.Drawing.Size(50, 22);
+            // 
+            // insToolStripStatusLabel
+            // 
+            this.insToolStripStatusLabel.AutoSize = false;
+            this.insToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
+            this.insToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.insToolStripStatusLabel.Name = "insToolStripStatusLabel";
+            this.insToolStripStatusLabel.Size = new System.Drawing.Size(50, 22);
+            // 
+            // cultureToolStripStatusLabel
+            // 
+            this.cultureToolStripStatusLabel.AutoSize = false;
+            this.cultureToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.cultureToolStripStatusLabel.Name = "cultureToolStripStatusLabel";
+            this.cultureToolStripStatusLabel.Size = new System.Drawing.Size(433, 22);
+            this.cultureToolStripStatusLabel.Spring = true;
+            this.cultureToolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // scribblerTopToolStripPanel
             // 
@@ -670,37 +698,6 @@
             // scribblerOpenFileDialog
             // 
             this.scribblerOpenFileDialog.FileName = "openFileDialog1";
-            // 
-            // majToolStripStatusLabel
-            // 
-            this.majToolStripStatusLabel.AutoSize = false;
-            this.majToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.majToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
-            this.majToolStripStatusLabel.Name = "majToolStripStatusLabel";
-            this.majToolStripStatusLabel.Size = new System.Drawing.Size(50, 22);
-            // 
-            // insToolStripStatusLabel
-            // 
-            this.insToolStripStatusLabel.AutoSize = false;
-            this.insToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.insToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
-            this.insToolStripStatusLabel.Name = "insToolStripStatusLabel";
-            this.insToolStripStatusLabel.Size = new System.Drawing.Size(50, 22);
-            // 
-            // cultureToolStripStatusLabel
-            // 
-            this.cultureToolStripStatusLabel.AutoSize = false;
-            this.cultureToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.cultureToolStripStatusLabel.Name = "cultureToolStripStatusLabel";
-            this.cultureToolStripStatusLabel.Size = new System.Drawing.Size(433, 22);
-            this.cultureToolStripStatusLabel.Spring = true;
-            this.cultureToolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ScribblerPrincipalForm
             // 
