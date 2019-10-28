@@ -73,6 +73,7 @@ namespace Scribbler
             {
                 majToolStripStatusLabel.Text = "MAJ";
             }
+            insToolStripStatusLabel.Text = "INS";
         }
 
         #endregion
@@ -330,11 +331,11 @@ namespace Scribbler
             {
                 if(((ScribblerNoteForm)this.ActiveMdiChild).ModeInserer)
                 {
-                    insToolStripStatusLabel.Text = "INS";
+                    insToolStripStatusLabel.Text = "RFP";
                 }
                 else
                 {
-                    insToolStripStatusLabel.Text = "RFP";
+                    insToolStripStatusLabel.Text = "INS";
                 }
                 noteToolStripStatusLabel.Text = this.ActiveMdiChild.Text;
             }
@@ -516,16 +517,20 @@ namespace Scribbler
             {
                 if(insToolStripStatusLabel.Text == "INS")
                 {
+
                     insToolStripStatusLabel.Text = "RFP";
-                    (this.ActiveMdiChild as ScribblerNoteForm).ModeInserer = false;
+                    if (this.ActiveMdiChild != null)
+                        (this.ActiveMdiChild as ScribblerNoteForm).ModeInserer = false;
                 }
             }
             else
             {
                 insToolStripStatusLabel.Text = "INS";
-                if(this.ActiveMdiChild != null)
+                if (this.ActiveMdiChild != null)
                     (this.ActiveMdiChild as ScribblerNoteForm).ModeInserer = true;
             }
+
+            insToolStripStatusLabel.Text = "INS";
         }
 
         #endregion
