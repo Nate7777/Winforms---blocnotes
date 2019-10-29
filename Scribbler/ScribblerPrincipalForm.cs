@@ -1,7 +1,7 @@
 ﻿/*
         Programmeur: Nathan Comeau,Andy Fleur, Lala et Cabrel
         Date: 10/25/2019
-        But:  Creer une application MDI - Devoir 02 phase E
+        But:  Creer une application MDI - Devoir 02 phase F
  
         Solution: Scribbler.sln
         Projet:   Scribbler.csproj
@@ -81,6 +81,10 @@ namespace Scribbler
 
             oComboBox = policeToolStripComboBox.ComboBox;
             oComboBox.DisplayMember = "Name";
+
+            oComboBox.DrawMode = DrawMode.OwnerDrawVariable;
+            oComboBox.DrawItem += policeToolStripComboBox_DrawItem;
+            oComboBox.MeasureItem += oComboBox_MeasureItem;
 
             InitPolice();
 
@@ -219,6 +223,7 @@ namespace Scribbler
                         scribbler.Enregistrer();
                     else
                         scribbler.EnregistrerSous();
+                    noteToolStripStatusLabel.Text = this.ActiveMdiChild.Text;
                 }
                 else
                 {
@@ -330,7 +335,7 @@ namespace Scribbler
 
         #endregion
 
-        #region MDIChilActivated
+        #region MDIChildActivated
         private void ScribblerPrincipalForm_MdiChildActivate(object sender, EventArgs e)
         {
             if (this.ActiveMdiChild == null)
@@ -396,7 +401,7 @@ namespace Scribbler
                 
                 foreach(FontFamily oFont in oInstalledFonts.Families)
                 {
-                    policeToolStripComboBox.Items.Add(oFont.Name);
+                    policeToolStripComboBox.Items.Add(oFont);
                 }
             }
             catch(Exception)
@@ -417,7 +422,8 @@ namespace Scribbler
             {
                 try
                 {
-
+                    rtb.SelectionFont = new Font(policeToolStripComboBox.Text, oFont.Size, oFont.Style);
+                    this.ActiveMdiChild.ActiveControl.Focus();
                 }
                 catch(Exception)
                 {
@@ -428,10 +434,53 @@ namespace Scribbler
 
         #endregion
 
+        #region Dessiner les polices
+
+        private void oComboBox_MeasureItem(object sender, MeasureItemEventArgs e)
+        {
+            e.ItemHeight = 17;
+        }
+
+        private void policeToolStripComboBox_DrawItem(object sender,DrawItemEventArgs e)
+        {
+            oComboBox = (ComboBox)sender;
+            FontFamily oFontFam = (FontFamily)oComboBox.Items[e.Index];
+            Font oFont = new Font(oFontFam, oComboBox.Font.SizeInPoints);
+
+            e.DrawBackground();
+            e.Graphics.DrawString(oFont.Name, oFont, Brushes.Black, e.Bounds.X, e.Bounds.Y);
+        }
+
+        #endregion
+
         #region Selected index changed des tailles
         private void sizeToolStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ScribblerNoteForm oNote;
+            oNote = (ScribblerNoteForm)this.ActiveMdiChild;
 
+            try
+            {
+                RichTextBox rtb = (this.ActiveMdiChild as ScribblerNoteForm).noteRichTextBox;
+                Font oFont = rtb.SelectionFont;
+
+                if(oFont!= null)
+                {
+                    try
+                    {
+                        oNote.noteRichTextBox.SelectionFont = new Font(oFont.FontFamily, Convert.ToInt32(sizeToolStripComboBox.Text), oFont.Style);
+                        oNote.ActiveControl.Focus();
+                    }
+                    catch(Exception)
+                    {
+                        MessageBox.Show(em.EmStylePolice.ToString());
+                    }
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show(em.EmInattendu.ToString());
+            }
         }
 
         #endregion
@@ -440,11 +489,11 @@ namespace Scribbler
 
         private void policeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ScribblerNoteForm oScribbler = this.ActiveMdiChild as ScribblerNoteForm;
-            RichTextBox rtb = oScribbler.noteRichTextBox;
-
             try
             {
+                ScribblerNoteForm oScribbler = this.ActiveMdiChild as ScribblerNoteForm;
+                RichTextBox rtb = oScribbler.noteRichTextBox;
+
                 scribblerFontDialog.Font = oScribbler.noteRichTextBox.SelectionFont;
 
                 if(scribblerFontDialog.ShowDialog() == DialogResult.OK)
@@ -603,7 +652,7 @@ namespace Scribbler
             }
             else
             {
-                majToolStripStatusLabel.Text = "";
+                majToolStripStatusLabel.Text = String.Empty;
             }
 
             if(e.KeyCode == Keys.Insert)
@@ -622,8 +671,6 @@ namespace Scribbler
                 if (this.ActiveMdiChild != null)
                     (this.ActiveMdiChild as ScribblerNoteForm).ModeInserer = true;
             }
-
-            insToolStripStatusLabel.Text = "INS";
         }
 
         #endregion

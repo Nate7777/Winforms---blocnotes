@@ -324,7 +324,7 @@
             // 
             this.policeToolStripMenuItem.Image = global::Scribbler.Properties.Resources.FontDialogHS;
             this.policeToolStripMenuItem.Name = "policeToolStripMenuItem";
-            this.policeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.policeToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
             this.policeToolStripMenuItem.Text = "&Police...";
             this.policeToolStripMenuItem.Click += new System.EventHandler(this.policeToolStripMenuItem_Click);
             // 
@@ -430,7 +430,7 @@
             this.alignerDroiteToolStripButton});
             this.scribblerToolStrip.Location = new System.Drawing.Point(4, 32);
             this.scribblerToolStrip.Name = "scribblerToolStrip";
-            this.scribblerToolStrip.Size = new System.Drawing.Size(677, 28);
+            this.scribblerToolStrip.Size = new System.Drawing.Size(796, 28);
             this.scribblerToolStrip.TabIndex = 1;
             this.scribblerToolStrip.Text = "toolStrip1";
             // 
@@ -525,11 +525,16 @@
             // policeToolStripComboBox
             // 
             this.policeToolStripComboBox.Name = "policeToolStripComboBox";
-            this.policeToolStripComboBox.Size = new System.Drawing.Size(121, 28);
+            this.policeToolStripComboBox.Size = new System.Drawing.Size(260, 28);
             this.policeToolStripComboBox.SelectedIndexChanged += new System.EventHandler(this.policeToolStripComboBox_SelectedIndexChanged);
             // 
             // sizeToolStripComboBox
             // 
+            this.sizeToolStripComboBox.Items.AddRange(new object[] {
+            "8",
+            "10",
+            "12",
+            "14"});
             this.sizeToolStripComboBox.Name = "sizeToolStripComboBox";
             this.sizeToolStripComboBox.Size = new System.Drawing.Size(121, 28);
             this.sizeToolStripComboBox.SelectedIndexChanged += new System.EventHandler(this.sizeToolStripComboBox_SelectedIndexChanged);
@@ -633,17 +638,17 @@
             // 
             this.majToolStripStatusLabel.AutoSize = false;
             this.majToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
-            this.majToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.majToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
             this.majToolStripStatusLabel.Name = "majToolStripStatusLabel";
-            this.majToolStripStatusLabel.Size = new System.Drawing.Size(50, 22);
+            this.majToolStripStatusLabel.Size = new System.Drawing.Size(30, 22);
             // 
             // insToolStripStatusLabel
             // 
             this.insToolStripStatusLabel.AutoSize = false;
             this.insToolStripStatusLabel.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right)));
-            this.insToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.RaisedOuter;
+            this.insToolStripStatusLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
             this.insToolStripStatusLabel.Name = "insToolStripStatusLabel";
-            this.insToolStripStatusLabel.Size = new System.Drawing.Size(50, 22);
+            this.insToolStripStatusLabel.Size = new System.Drawing.Size(30, 22);
             // 
             // cultureToolStripStatusLabel
             // 
@@ -658,14 +663,14 @@
             // 
             // scribblerTopToolStripPanel
             // 
-            this.scribblerTopToolStripPanel.Controls.Add(this.scribblerToolStrip);
             this.scribblerTopToolStripPanel.Controls.Add(this.scribblerMenuStrip);
+            this.scribblerTopToolStripPanel.Controls.Add(this.scribblerToolStrip);
             this.scribblerTopToolStripPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.scribblerTopToolStripPanel.Location = new System.Drawing.Point(0, 0);
             this.scribblerTopToolStripPanel.Name = "scribblerTopToolStripPanel";
             this.scribblerTopToolStripPanel.Orientation = System.Windows.Forms.Orientation.Horizontal;
             this.scribblerTopToolStripPanel.RowMargin = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.scribblerTopToolStripPanel.Size = new System.Drawing.Size(800, 60);
+            this.scribblerTopToolStripPanel.Size = new System.Drawing.Size(800, 63);
             this.scribblerTopToolStripPanel.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.Panneaux_ControlAdded);
             // 
             // scribblerLeftToolStripPanel
