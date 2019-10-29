@@ -78,7 +78,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.aideToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.policeToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
-            this.scribToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
+            this.sizeToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.boldToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.italicToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.underlineToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -96,6 +96,7 @@
             this.scribblerRightToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.basToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.scribblerOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.scribblerFontDialog = new System.Windows.Forms.FontDialog();
             this.scribblerMenuStrip.SuspendLayout();
             this.scribblerToolStrip.SuspendLayout();
             this.scribblerStatusStrip.SuspendLayout();
@@ -118,7 +119,7 @@
             this.fenetreToolStripMenuItem,
             this.aideToolStripMenuItem,
             this.questionToolStripComboBox});
-            this.scribblerMenuStrip.Location = new System.Drawing.Point(0, 28);
+            this.scribblerMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.scribblerMenuStrip.MdiWindowListItem = this.fenetreToolStripMenuItem;
             this.scribblerMenuStrip.Name = "scribblerMenuStrip";
             this.scribblerMenuStrip.Size = new System.Drawing.Size(800, 32);
@@ -323,8 +324,9 @@
             // 
             this.policeToolStripMenuItem.Image = global::Scribbler.Properties.Resources.FontDialogHS;
             this.policeToolStripMenuItem.Name = "policeToolStripMenuItem";
-            this.policeToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
+            this.policeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.policeToolStripMenuItem.Text = "&Police...";
+            this.policeToolStripMenuItem.Click += new System.EventHandler(this.policeToolStripMenuItem_Click);
             // 
             // outilsToolStripMenuItem
             // 
@@ -419,14 +421,14 @@
             this.toolStripSeparator1,
             this.aideToolStripButton,
             this.policeToolStripComboBox,
-            this.scribToolStripComboBox,
+            this.sizeToolStripComboBox,
             this.boldToolStripButton,
             this.italicToolStripButton,
             this.underlineToolStripButton,
             this.alignerGaucheToolStripButton,
             this.centrerToolStripButton,
             this.alignerDroiteToolStripButton});
-            this.scribblerToolStrip.Location = new System.Drawing.Point(4, 0);
+            this.scribblerToolStrip.Location = new System.Drawing.Point(4, 32);
             this.scribblerToolStrip.Name = "scribblerToolStrip";
             this.scribblerToolStrip.Size = new System.Drawing.Size(677, 28);
             this.scribblerToolStrip.TabIndex = 1;
@@ -524,11 +526,13 @@
             // 
             this.policeToolStripComboBox.Name = "policeToolStripComboBox";
             this.policeToolStripComboBox.Size = new System.Drawing.Size(121, 28);
+            this.policeToolStripComboBox.SelectedIndexChanged += new System.EventHandler(this.policeToolStripComboBox_SelectedIndexChanged);
             // 
-            // scribToolStripComboBox
+            // sizeToolStripComboBox
             // 
-            this.scribToolStripComboBox.Name = "scribToolStripComboBox";
-            this.scribToolStripComboBox.Size = new System.Drawing.Size(121, 28);
+            this.sizeToolStripComboBox.Name = "sizeToolStripComboBox";
+            this.sizeToolStripComboBox.Size = new System.Drawing.Size(121, 28);
+            this.sizeToolStripComboBox.SelectedIndexChanged += new System.EventHandler(this.sizeToolStripComboBox_SelectedIndexChanged);
             // 
             // boldToolStripButton
             // 
@@ -787,7 +791,7 @@
         internal System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         internal System.Windows.Forms.ToolStripButton aideToolStripButton;
         internal System.Windows.Forms.ToolStripComboBox policeToolStripComboBox;
-        internal System.Windows.Forms.ToolStripComboBox scribToolStripComboBox;
+        internal System.Windows.Forms.ToolStripComboBox sizeToolStripComboBox;
         internal System.Windows.Forms.ToolStripButton boldToolStripButton;
         internal System.Windows.Forms.ToolStripButton italicToolStripButton;
         internal System.Windows.Forms.ToolStripButton underlineToolStripButton;
@@ -804,6 +808,7 @@
         private System.Windows.Forms.ToolStripStatusLabel majToolStripStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel insToolStripStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel cultureToolStripStatusLabel;
+        private System.Windows.Forms.FontDialog scribblerFontDialog;
     }
 }
 

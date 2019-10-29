@@ -41,6 +41,7 @@ namespace Scribbler
         private string initialdirectory;
         int Filtreint = 0;
         string extensionDefautString = "rtf";
+        private ComboBox oComboBox;
 
         #endregion
 
@@ -74,6 +75,20 @@ namespace Scribbler
                 majToolStripStatusLabel.Text = "MAJ";
             }
             insToolStripStatusLabel.Text = "INS";
+
+            policeToolStripComboBox.SelectedIndexChanged -= policeToolStripComboBox_SelectedIndexChanged;
+            sizeToolStripComboBox.SelectedIndexChanged -= sizeToolStripComboBox_SelectedIndexChanged;
+
+            oComboBox = policeToolStripComboBox.ComboBox;
+            oComboBox.DisplayMember = "Name";
+
+            InitPolice();
+
+            policeToolStripComboBox.SelectedIndexChanged += policeToolStripComboBox_SelectedIndexChanged;
+            sizeToolStripComboBox.SelectedIndexChanged += sizeToolStripComboBox_SelectedIndexChanged;
+
+            scribblerFontDialog.MinSize = 8;
+            scribblerFontDialog.MaxSize = 14;
         }
 
         #endregion
@@ -166,7 +181,7 @@ namespace Scribbler
                 else
                 {
                     policeToolStripComboBox.Visible = false;
-                    scribToolStripComboBox.Visible = false;
+                    sizeToolStripComboBox.Visible = false;
 
                 }
             }
@@ -180,7 +195,7 @@ namespace Scribbler
                 else
                 {
                     policeToolStripComboBox.Visible = true;
-                    scribToolStripComboBox.Visible = true;
+                    sizeToolStripComboBox.Visible = true;
                 }
             }
         }
@@ -344,6 +359,8 @@ namespace Scribbler
 
         #endregion
 
+        #region Polices
+
         #region Style de police
         private void StylePolice(object sender, EventArgs e)
         {
@@ -366,6 +383,82 @@ namespace Scribbler
                    Environment.NewLine.ToString());
             }
         }
+
+        #endregion
+
+        #region Initialisation des polices
+
+        void InitPolice()
+        {
+            try
+            {
+                System.Drawing.Text.InstalledFontCollection oInstalledFonts = new System.Drawing.Text.InstalledFontCollection();
+                
+                foreach(FontFamily oFont in oInstalledFonts.Families)
+                {
+                    policeToolStripComboBox.Items.Add(oFont.Name);
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show(em.EmStylePolice.ToString());
+            }
+        }
+
+        #endregion
+
+        #region Selected index changed des polices
+        private void policeToolStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RichTextBox rtb = (this.ActiveMdiChild as ScribblerNoteForm).noteRichTextBox;
+            Font oFont = rtb.SelectionFont;
+
+            if(oFont != null)
+            {
+                try
+                {
+
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show(em.EmStylePolice.ToString());
+                }
+            }
+        }
+
+        #endregion
+
+        #region Selected index changed des tailles
+        private void sizeToolStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Menu item police
+
+        private void policeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ScribblerNoteForm oScribbler = this.ActiveMdiChild as ScribblerNoteForm;
+            RichTextBox rtb = oScribbler.noteRichTextBox;
+
+            try
+            {
+                scribblerFontDialog.Font = oScribbler.noteRichTextBox.SelectionFont;
+
+                if(scribblerFontDialog.ShowDialog() == DialogResult.OK)
+                {
+                    rtb.SelectionFont = scribblerFontDialog.Font;
+                }
+            }
+            catch(Exception)
+            {
+                MessageBox.Show(em.EmStylePolice.ToString());
+            }
+        }
+
+        #endregion
 
         #endregion
 

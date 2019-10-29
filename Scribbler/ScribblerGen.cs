@@ -36,7 +36,7 @@ namespace Scribbler
             EmStylePolice
         }
 
-        public static string[] MessagesErreurs = new string[9];
+        public static string[] MessagesErreurs = new string[10];
 
         public static void InitMessages()
         {

@@ -190,7 +190,8 @@ namespace Scribbler
 
                 if (this.noteRichTextBox.SelectionFont != null)
                 {
-                    //parent.policeToolStripComboBox.Text = noteRichTextBox.SelectionFont.Name;
+                    parent.sizeToolStripComboBox.Text = Convert.ToInt32(noteRichTextBox.SelectionFont.Size).ToString();
+                    parent.policeToolStripComboBox.Text = noteRichTextBox.SelectionFont.Name;
                     parent.boldToolStripButton.Checked = noteRichTextBox.SelectionFont.Bold;
                     parent.italicToolStripButton.Checked = noteRichTextBox.SelectionFont.Italic;
                     parent.underlineToolStripButton.Checked = noteRichTextBox.SelectionFont.Underline;
